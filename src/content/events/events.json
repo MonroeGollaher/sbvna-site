@@ -1,0 +1,30 @@
+{
+  "title": "Neighborhood Events",
+  "blurb": "South Boise Village hosts events throughout the year that bring neighbors together—community cleanups, park gatherings, meetings, and seasonal celebrations. Everyone is welcome to attend.",
+  "events": [
+    {
+      "id": "spring-cleanup-2025",
+      "title": "Spring Neighborhood Cleanup",
+      "description": "Join neighbors for our annual spring cleanup. Bags, gloves, and refreshments will be provided. All ages welcome.",
+      "startTime": "2025-04-12T09:00:00-06:00",
+      "endTime": "2025-04-12T12:00:00-06:00",
+      "location": "Manitou Park",
+      "image": "https://placehold.co/200",
+      "imageAlt": "Volunteers cleaning up Manitou Park",
+      "ctaText": "Learn more",
+      "ctaUrl": "/documents/cleanup-details.pdf",
+      "tags": ["Community", "Volunteer"],
+      "isFeatured": true
+    },
+    {
+      "id": "monthly-board-meeting-apr",
+      "title": "April Board Meeting",
+      "description": "Monthly SBVNA board meeting. Neighbors are encouraged to attend and participate.",
+      "startTime": "2025-04-17T18:30:00-06:00",
+      "location": "Garfield Elementary Library",
+      "image": "https://placehold.co/200",
+      "imageAlt": "Community board meeting",
+      "tags": ["Meeting"]
+    }
+  ]
+}

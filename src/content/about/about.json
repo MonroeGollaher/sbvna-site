@@ -1,0 +1,31 @@
+{
+  "title": "About South Boise Village",
+  "blurb": "Our neighborhood is nestled south of the university between Boise Avenue and Broadway. From BSU students to retirees, we are an eclectic combination of people that constitute a vibrant and unique neighborhood. Most of our events and community gatherings are centered in shady Manitou Park and around Garfield Elementary School, which lies just east of our official boundary.",
+  "headerImage": "https://static.wixstatic.com/media/29b484_7be0a6e1283345e2a38e0e7d2bac9404~mv2.jpg/v1/fill/w_466,h_602,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/SBVNA_boundaries4122019%20(002).jpg",
+  "headerImageAlt": "map of SBVNA neighborhood",
+  "sections": [
+    {
+      "title": "South Boise Village Neighborhood Association",
+      "blurb": "Established in 1996, the South Boise Village Neighborhood Association (SBVNA) is recognized as a neighborhood association by the City of Boise. SBVNA is bounded on the west by Protest Road and the Ridenbaugh Canal, on the east by Broadway Avenue, on the north by Boise Avenue, and on the south by Howard Street.\n\nAccording to the 2010 census, approximately 2,112 residents live in 940 households in the neighborhood. Fifty-five percent of the homes are owner-occupied. The average age of SBVNA residents is 41."
+    },
+    {
+      "title": "What Is a Neighborhood Association?",
+      "blurb": "A neighborhood association is not a homeowner’s association. There are no fees or dues involved, and the association has no control over how neighbors use their property. Membership is open to any resident—renter or owner. Board and committee members volunteer their time and energy to address the needs of the neighborhood.",
+      "image": "public/uploads/HOA-NA Overview.avif",
+      "imageAlt": "hoa-vs-na",
+      "imageCaption": "If you live within the boundaries of South Boise Village, you are the neighborhood association. You are encouraged to attend meetings and events and express your concerns. Get involved, help yourself and help your neighbors."
+    },
+    {
+      "title": "Mission Statement",
+      "blurb": "The South Boise Village Neighborhood Association (SBVNA) is a voluntary association of residents and property owners within the established boundaries of the SBVNA. We share the common goals of preserving and enhancing the overall quality of life and supporting the common good of all members by building active consensus, capitalizing on opportunities, managing problems, and creating community."
+    },
+    {
+      "title": "Vision Statement",
+      "blurb": "SBVNA works toward its mission by:\n\n- Promoting and encouraging open and honest communication in a safe environment for all members, including residents, business and property owners, and tenants\n\n- Respecting, recognizing, and maintaining ethnic, family, socio-economic, and cultural diversity\n\n- Working effectively with city and county agencies to manage growth while ensuring livable density, aesthetic architectural styles, and a well-maintained neighborhood\n\n- Maintaining healthy and active relationships with other neighborhood groups, civic organizations, and government agencies\n\n- Achieving a sense of community and security by encouraging responsibility, involvement, and pride among all residents and owners\n\n- Creating safe, walkable, and bikeable streets within the neighborhood\n\n- Anticipating and solving existing or potential issues proactively\n\n- Preserving and promoting public and historic spaces"
+    },
+    {
+      "title": "Projects",
+      "blurb": "The triangle parks along Boise Avenue with obelisks marking the Oregon Trail are the work of the SBVNA, as are the signs at strategic entrances to the neighborhood and at Manitou Park. Funding for these projects was obtained through grants written by Association volunteers. \n SBVNA tracks activities and/or plans that may impact residents, for example, new construction, new businesses, changes in zoning or traffic patterns, etc. By presenting a united front to city and county agencies, residents have much more clout than the individuals who would feel the impact the most. Together we are strong."
+    }
+  ]
+}

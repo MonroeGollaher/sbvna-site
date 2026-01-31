@@ -1,0 +1,73 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home"
+        file: "src/content/home.json"
+        fields:
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "intro", label: "Intro", widget: "text" }
+
+  - name: "board"
+    label: "Board Members"
+    folder: "src/content/board"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - { name: "name", label: "Name", widget: "string" }
+      - { name: "role", label: "Role", widget: "string" }
+      - { name: "email", label: "Email", widget: "string", required: false }
+      - { name: "photo", label: "Photo", widget: "image", required: false }
+      - { name: "bio", label: "Bio", widget: "text", required: false }
+
+  - name: "gallery"
+    label: "Gallery"
+    folder: "src/content/gallery"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "image", label: "Image", widget: "image" }
+      - { name: "caption", label: "Caption", widget: "text", required: false }
+      - { name: "tags", label: "Tags", widget: "list", required: false }
+
+  - name: "documents"
+    label: "Documents"
+    folder: "src/content/documents"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - {
+          name: "category",
+          label: "Category",
+          widget: "select",
+          options: ["HOA", "Meeting Minutes", "Rules", "Events", "Other"]
+        }
+      - { name: "file", label: "PDF / File", widget: "file", required: false }
+      - {
+          name: "externalUrl",
+          label: "External Link",
+          widget: "string",
+          required: false
+        }
+      - {
+          name: "description",
+          label: "Description",
+          widget: "text",
+          required: false
+        }
