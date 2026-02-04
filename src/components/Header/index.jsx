@@ -51,6 +51,9 @@ export default function Header() {
           <NavLink to="/documents" className={linkClass}>
             Documents
           </NavLink>
+          <NavLink to="/resources" className={linkClass}>
+            Resources
+          </NavLink>
 
           <a className="nav-link nav-link--button" href="/admin/">
             Admin
@@ -95,6 +98,9 @@ export default function Header() {
           </NavLink>
           <NavLink to="/documents" className={linkClass}>
             Documents
+          </NavLink>
+          <NavLink to="/resources" className={linkClass}>
+            Resources
           </NavLink>
 
           <a className="nav-link nav-link--button" href="/admin/">

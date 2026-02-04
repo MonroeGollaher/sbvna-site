@@ -1,0 +1,214 @@
+{
+  "title": "Resources",
+  "blurb": "Helpful contacts and links for public safety, city services, transportation, and community support.",
+  "sections": [
+    {
+      "id": "public-safety",
+      "title": "Public Safety",
+      "items": [
+        {
+          "type": "link",
+          "title": "Boise Police Department",
+          "url": "https://www.cityofboise.org/",
+          "description": "Neighborhood Contact Officers"
+        },
+        {
+          "type": "contact",
+          "title": "Neighborhood Contact Officer",
+          "name": "Trevor Stokes",
+          "email": "TStokes@cityofboise.org",
+          "phone": "208-570-6426"
+        },
+        {
+          "type": "contact",
+          "title": "Neighborhood Contact Officer",
+          "name": "Bob Gibson",
+          "email": "RGibson@cityofboise.org",
+          "phone": "208-570-6431"
+        },
+        {
+          "type": "contact",
+          "title": "Crime Stoppers",
+          "phone": "208-377-6790",
+          "alternatePhone": "208-343-2677",
+          "notes": "343-COPS"
+        },
+        {
+          "type": "text",
+          "title": "Neighborhood Watch",
+          "body": "Consider starting or joining a Neighborhood Watch group."
+        }
+      ]
+    },
+    {
+      "id": "roads-transportation",
+      "title": "Roads & Transportation",
+      "items": [
+        {
+          "type": "link",
+          "title": "Ada County Highway District (ACHD)",
+          "url": "https://www.achdidaho.org/"
+        },
+        {
+          "type": "contact",
+          "title": "Commissioner for District 1",
+          "name": "Jim Hansen",
+          "phone": "208-397-6100"
+        },
+        {
+          "type": "link",
+          "title": "ACCESS Paratransit",
+          "url": "https://www.valleyregionaltransit.org/"
+        },
+        {
+          "type": "link",
+          "title": "Bronco Shuttle",
+          "url": "https://www.valleyregionaltransit.org/"
+        },
+        {
+          "type": "link",
+          "title": "Treasure Valley Transit",
+          "url": "https://www.google.com/"
+        },
+        {
+          "type": "link",
+          "title": "Valley Regional Transit (Bus)",
+          "url": "https://www.google.com/"
+        }
+      ]
+    },
+    {
+      "id": "city-services",
+      "title": "City Services",
+      "items": [
+        {
+          "type": "text",
+          "title": "City Council Meetings",
+          "body": "Regular meetings: Tuesdays @ 6 p.m. (except the 4th Tuesday begins at noon). Live-streamed on YouTube."
+        },
+        {
+          "type": "link",
+          "title": "City of Boise YouTube Channel (Live Streams)",
+          "url": "https://www.youtube.com/"
+        },
+        {
+          "type": "text",
+          "title": "Planning & Zoning Meetings",
+          "body": "1st Monday (except observed holidays) @ 6 p.m."
+        },
+        {
+          "type": "text",
+          "title": "Historic Preservation Commission",
+          "body": "3rd Monday of the month @ 6 p.m."
+        },
+        {
+          "type": "link",
+          "title": "Code Enforcement",
+          "url": "https://www.cityofboise.org/"
+        },
+        {
+          "type": "link",
+          "title": "Idaho Power (Power Outages)",
+          "url": "https://www.idahopower.com/"
+        },
+        {
+          "type": "link",
+          "title": "Parks & Recreation",
+          "url": "https://www.cityofboise.org/"
+        },
+        {
+          "type": "link",
+          "title": "Trash / Recycling",
+          "url": "https://www.cityofboise.org/"
+        },
+        {
+          "type": "link",
+          "title": "Treasure Valley Canopy Network",
+          "url": "https://www.tvcanopy.net/"
+        }
+      ]
+    },
+    {
+      "id": "support-services",
+      "title": "Support Services",
+      "items": [
+        {
+          "type": "contact",
+          "title": "Suicide & Crisis Hotline",
+          "phone": "988",
+          "notes": "Dial 988"
+        },
+        {
+          "type": "link",
+          "title": "Boise/Ada Housing Authorities",
+          "url": "https://bcacha.org/"
+        },
+        {
+          "type": "link",
+          "title": "Boise Public Libraries",
+          "url": "https://www.boisepubliclibrary.org/"
+        },
+        {
+          "type": "link",
+          "title": "Boise State Foodbank",
+          "url": "https://www.boisestate.edu/"
+        },
+        {
+          "type": "link",
+          "title": "El-Ada Community Action",
+          "url": "https://www.eladacap.org/"
+        },
+        {
+          "type": "link",
+          "title": "Find Help Idaho",
+          "url": "https://findhelpidaho.org/"
+        },
+        {
+          "type": "link",
+          "title": "Idaho Food Bank",
+          "url": "https://idahofoodbank.org/"
+        },
+        {
+          "type": "link",
+          "title": "Idaho Health & Welfare",
+          "url": "https://healthandwelfare.idaho.gov/"
+        },
+        {
+          "type": "link",
+          "title": "Idaho Legal Aid",
+          "url": "https://www.idaholegalaid.org/"
+        },
+        {
+          "type": "link",
+          "title": "Jesse Tree (Eviction Prevention)",
+          "url": "https://www.jessetreeidaho.org/"
+        },
+        {
+          "type": "link",
+          "title": "NAMI Idaho",
+          "url": "https://namiidaho.org/"
+        },
+        {
+          "type": "link",
+          "title": "Pathways of Idaho Crisis Center",
+          "url": "https://pathwaysofidaho.com/"
+        },
+        {
+          "type": "link",
+          "title": "St. Vincent de Paul Helpline",
+          "url": "https://svdpid.org/"
+        },
+        {
+          "type": "document",
+          "title": "Additional Resources",
+          "url": "https://4ea62f32-1c47-4cca-a2c9-ed5b9636ec41.filesusr.com",
+          "fileType": "pdf"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "SBVNA Resources page",
+    "lastReviewed": "2026-02-04"
+  }
+}
