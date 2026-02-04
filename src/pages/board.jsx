@@ -2,7 +2,7 @@ import board from "../content/board/board.json";
 
 export default function Board() {
   return (
-    <div>
+    <div className="page-wrapper">
       <h2>Meet the Board</h2>
 
       <div

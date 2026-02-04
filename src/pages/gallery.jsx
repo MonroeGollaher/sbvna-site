@@ -6,7 +6,7 @@ export default function Gallery() {
   const items = Object.values(galleryModules).map((m) => m.default || m);
 
   return (
-    <div>
+    <div className="page-wrapper">
       <h2>Photo Gallery</h2>
       <div
         style={{

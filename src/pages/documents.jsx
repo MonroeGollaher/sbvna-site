@@ -30,7 +30,7 @@ export default function Documents() {
   }, [docs, query, category]);
 
   return (
-    <div>
+    <div className="page-wrapper">
       <h2>Documents</h2>
 
       <div

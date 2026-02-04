@@ -1,6 +1,6 @@
 import { isExternalUrl } from "./utils";
 
-export default ResourceItem = ({ item }) => {
+const ResourceItem = ({ item }) => {
   switch (item.type) {
     case "link":
       return (
@@ -81,3 +81,5 @@ export default ResourceItem = ({ item }) => {
       );
   }
 };
+
+export default ResourceItem;

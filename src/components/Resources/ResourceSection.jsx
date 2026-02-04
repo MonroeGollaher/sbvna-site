@@ -1,6 +1,6 @@
 import ResourceItem from "./ResourceItem";
 
-export default ResourceSection = ({ section }) => {
+const ResourceSection = ({ section }) => {
   const { id, title, description, items = [] } = section;
 
   return (
@@ -24,3 +24,5 @@ export default ResourceSection = ({ section }) => {
     </section>
   );
 };
+
+export default ResourceSection;

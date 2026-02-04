@@ -2,7 +2,7 @@ import about from "../content/about/about.json";
 
 export default function About() {
   return (
-    <div>
+    <div className="page-wrapper">
       <h2>{about.title}</h2>
       <p>{about.blurb}</p>
       <img

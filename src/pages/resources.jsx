@@ -5,7 +5,7 @@ export default function Resources() {
   const { title, blurb, sections = [] } = resources;
 
   return (
-    <div>
+    <div className="page-wrapper">
       <h2>{title}</h2>
       {blurb ? <p>{blurb}</p> : null}
 
