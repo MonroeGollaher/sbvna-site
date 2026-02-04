@@ -8,6 +8,7 @@ import About from "./pages/about.jsx";
 import Events from "./pages/events.jsx";
 import Resources from "./pages/resources.jsx";
 import Admin from "./pages/admin.jsx";
+import Footer from "./components/Footer/index.jsx";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/resources" element={<Resources />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
