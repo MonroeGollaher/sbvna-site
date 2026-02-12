@@ -1,0 +1,25 @@
+.footer {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-12);
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-bg-sunken);
+}
+
+.footer__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer__title {
+  margin-top: 0;
+}
+
+.footer__contact {
+  margin-top: var(--space-3);
+}
+
+.footer__copyright {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}

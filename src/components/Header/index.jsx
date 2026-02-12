@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import ThemeToggle from "../ThemeToggle";
 import "./styles.css";
 
 export default function Header() {
@@ -37,7 +38,7 @@ export default function Header() {
             Home
           </NavLink>
           <NavLink to="/about" className={linkClass}>
-            About South Boise Village
+            About
           </NavLink>
           <NavLink to="/board" className={linkClass}>
             Meet the Board
@@ -58,21 +59,26 @@ export default function Header() {
           <a className="nav-link nav-link--button" href="/admin/">
             Admin
           </a>
+
+          <ThemeToggle />
         </nav>
 
-        {/* Mobile button */}
-        <button
-          type="button"
-          className={isOpen ? "menu-button menu-button--open" : "menu-button"}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          onClick={() => setIsOpen((v) => !v)}
-        >
-          <span className="menu-button__bar" />
-          <span className="menu-button__bar" />
-          <span className="menu-button__bar" />
-        </button>
+        {/* Mobile controls */}
+        <div className="header__mobile-controls">
+          <ThemeToggle />
+          <button
+            type="button"
+            className={isOpen ? "menu-button menu-button--open" : "menu-button"}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setIsOpen((v) => !v)}
+          >
+            <span className="menu-button__bar" />
+            <span className="menu-button__bar" />
+            <span className="menu-button__bar" />
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -88,7 +94,7 @@ export default function Header() {
             About South Boise Village
           </NavLink>
           <NavLink to="/board" className={linkClass}>
-            Meet the Board
+            Board
           </NavLink>
           <NavLink to="/events" className={linkClass}>
             Events
