@@ -21,7 +21,6 @@ export default function Board() {
               padding: 16,
               background: "#fff"
             }}
-            className="card"
           >
             {member.photo ? (
               <img
