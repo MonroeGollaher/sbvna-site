@@ -10,6 +10,29 @@ export default function Home() {
           <p className="hero__subtitle">{home.intro}</p>
         </div>
       </section>
+
+      <section className="poster">
+        <div className="poster__inner">
+          <img
+            className="poster__image"
+            src="/images/sbv-poster.webp"
+            alt="Historic South Boise Village Neighborhood poster — available for a minimum donation of $10"
+          />
+          <div className="poster__text">
+            <h3>Neighborhood Poster</h3>
+            <p>
+              Get a beautiful 11" x 17" Historic South Boise Village poster for
+              your home. Available for a minimum donation of $10 (cash or check
+              only) with free delivery to your door.
+            </p>
+            <p>
+              Contact{" "}
+              <a href="mailto:sbvnaboise@gmail.com">sbvnaboise@gmail.com</a> to
+              order yours.
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
