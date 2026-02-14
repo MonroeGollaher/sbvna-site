@@ -1,0 +1,115 @@
+/* ===== LIGHT MODE (default) ===== */
+:root,
+[data-theme="light"] {
+  /* --- Brand --- */
+  --color-brand: #719843;
+  --color-brand-light: #8db35a;
+  --color-brand-lighter: #e8f0da;
+  --color-brand-dark: #5a7a35;
+
+  /* --- Surfaces --- */
+  --color-bg: #faf9f6;
+  --color-bg-raised: #ffffff;
+  --color-bg-sunken: #f3f1ec;
+  --color-bg-overlay: rgba(0, 0, 0, 0.06);
+
+  /* --- Borders --- */
+  --color-border: #e0ddd5;
+  --color-border-strong: #c9c4b8;
+
+  /* --- Text --- */
+  --color-text: #2c2c2c;
+  --color-text-secondary: #6b6560;
+  --color-text-muted: #9b958e;
+  --color-text-inverse: #faf9f6;
+
+  /* --- Links --- */
+  --color-link: #5a7a35;
+  --color-link-hover: #719843;
+
+  /* --- Semantic --- */
+  --color-success: #719843;
+  --color-warning: #c48b2c;
+  --color-error: #c44b3f;
+  --color-info: #4b7eb5;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  /* --- Spacing (4px base) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* --- Typography --- */
+  --font-family: "Inter", system-ui, -apple-system, sans-serif;
+  --font-family-heading: var(--font-family);
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* --- Border radius --- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+
+  /* --- Layout --- */
+  --max-width: 1100px;
+}
+
+/* ===== DARK MODE ===== */
+[data-theme="dark"] {
+  --color-brand: #8db35a;
+  --color-brand-light: #a3c878;
+  --color-brand-lighter: #2d3a1f;
+  --color-brand-dark: #719843;
+
+  --color-bg: #1a1a1a;
+  --color-bg-raised: #262626;
+  --color-bg-sunken: #141414;
+  --color-bg-overlay: rgba(0, 0, 0, 0.3);
+
+  --color-border: #3a3a3a;
+  --color-border-strong: #505050;
+
+  --color-text: #e8e6e1;
+  --color-text-secondary: #a8a29e;
+  --color-text-muted: #706b65;
+  --color-text-inverse: #1a1a1a;
+
+  --color-link: #a3c878;
+  --color-link-hover: #8db35a;
+
+  --color-success: #8db35a;
+  --color-warning: #daa54e;
+  --color-error: #e06b60;
+  --color-info: #6b9ed5;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
