@@ -1,5 +1,5 @@
 import resources from "../content/resources/resources.json";
-import ResourceSection from "../components/Resources/ResourceSection";
+import ResourceSection from "../components/ResourceSection";
 
 export default function Resources() {
   const { title, blurb, sections = [] } = resources;

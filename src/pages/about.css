@@ -1,0 +1,39 @@
+.about-section {
+  margin-top: var(--space-8);
+}
+
+.about-section h3 {
+  margin-bottom: var(--space-4);
+}
+
+.about-section p {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.about-section ul {
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 1.3em;
+  text-align: left;
+  max-width: 800px;
+  margin: var(--space-4) auto;
+}
+
+.about-section ul li {
+  margin-bottom: 12px;
+  line-height: 1.7;
+  font-size: var(--font-size-base);
+}
+
+.about-section img {
+  margin: var(--space-4) auto;
+}
+
+.about-section .caption {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-2);
+}

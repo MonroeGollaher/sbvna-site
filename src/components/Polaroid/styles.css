@@ -1,0 +1,76 @@
+.polaroid {
+  display: inline-block;
+  background: #fff;
+  padding: 8px 8px 25px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s linear, box-shadow 0.15s linear;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-text);
+  width: 180px;
+}
+
+.polaroid:hover {
+  transform: scale(1.25) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+  position: relative;
+}
+
+.polaroid__image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid__caption {
+  margin-top: 6px;
+  font-family: "Marker Felt", "Reenie Beanie", cursive;
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.2;
+}
+
+/* ===== Polaroid grid ===== */
+.polaroids {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-6);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Varied rotations for scattered look */
+.polaroids .polaroid:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.polaroids .polaroid:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.polaroids .polaroid:nth-child(3n) {
+  transform: rotate(0deg);
+  position: relative;
+  top: -5px;
+}
+
+.polaroids .polaroid:nth-child(5n) {
+  transform: rotate(5deg);
+}
+
+.polaroids .polaroid:nth-child(7n) {
+  transform: rotate(-3deg);
+}
+
+.polaroids .polaroid:nth-child(4n) {
+  transform: rotate(-4deg);
+  position: relative;
+  top: 3px;
+}

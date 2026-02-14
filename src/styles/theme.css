@@ -50,7 +50,7 @@
   --space-12: 48px;
 
   /* --- Typography --- */
-  --font-family: "Inter", system-ui, -apple-system, sans-serif;
+  --font-family: "Raleway", sans-serif;
   --font-family-heading: var(--font-family);
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;

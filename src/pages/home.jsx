@@ -10,7 +10,7 @@ export default function Home() {
           <h2 className="hero__title">{home.title}</h2>
           <p className="hero__subtitle">{home.intro}</p>
           <p className="hero__blurb">{home.blurb}</p>
-          <a href="/about">Learn more</a>
+          <a href="/about" className="hero__btn">Learn more</a>
         </div>
       </section>
 

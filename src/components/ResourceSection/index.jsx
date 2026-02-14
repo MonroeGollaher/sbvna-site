@@ -1,4 +1,5 @@
 import ResourceItem from "./ResourceItem";
+import "./styles.css";
 
 const ResourceSection = ({ section }) => {
   const { id, title, description, items = [] } = section;

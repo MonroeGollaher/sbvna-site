@@ -35,6 +35,27 @@
   line-height: var(--line-height-relaxed);
 }
 
+.hero__btn {
+  display: inline-block;
+  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: #fff;
+  background: var(--color-brand);
+  border: 2px solid #fff;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.hero__btn:hover {
+  background: var(--color-brand-light);
+  color: #fff;
+  text-decoration: none;
+  transform: scale(1.05);
+}
+
 /* ===== Poster section ===== */
 .poster {
   max-width: var(--max-width);
