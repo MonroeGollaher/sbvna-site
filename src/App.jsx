@@ -1,8 +1,8 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Board from "./pages/Board.jsx";
-import Gallery from "./pages/Gallery.jsx";
-import Documents from "./pages/Documents.jsx";
+import Home from "./pages/home.jsx";
+import Board from "./pages/board.jsx";
+import Gallery from "./pages/gallery.jsx";
+import Documents from "./pages/documents.jsx";
 import Header from "./components/Header/index.jsx";
 import About from "./pages/about.jsx";
 import Events from "./pages/events.jsx";
