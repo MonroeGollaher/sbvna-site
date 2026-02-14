@@ -11,24 +11,105 @@ collections:
     files:
       - name: "home"
         label: "Home"
-        file: "src/content/home.json"
+        file: "src/content/home/home.json"
         fields:
           - { name: "title", label: "Title", widget: "string" }
           - { name: "intro", label: "Intro", widget: "text" }
+          - { name: "blurb", label: "Blurb", widget: "text" }
+
+      - name: "about"
+        label: "About"
+        file: "src/content/about/about.json"
+        fields:
+          - { name: "title", label: "Page Title", widget: "string" }
+          - { name: "blurb", label: "Intro Blurb", widget: "text" }
+          - { name: "headerImage", label: "Header Image", widget: "image", required: false }
+          - { name: "headerImageAlt", label: "Header Image Alt Text", widget: "string", required: false }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "title", label: "Section Title", widget: "string" }
+              - { name: "blurb", label: "Section Text", widget: "text" }
+              - { name: "image", label: "Section Image", widget: "image", required: false }
+              - { name: "imageAlt", label: "Section Image Alt Text", widget: "string", required: false }
+              - { name: "imageCaption", label: "Section Image Caption", widget: "text", required: false }
+
+      - name: "events"
+        label: "Events Page"
+        file: "src/content/events/events.json"
+        fields:
+          - { name: "title", label: "Page Title", widget: "string" }
+          - { name: "blurb", label: "Page Intro", widget: "text" }
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "id", label: "ID", widget: "string", hint: "Short unique id, e.g. spring-cleanup-2026" }
+              - { name: "title", label: "Event Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "startTime", label: "Start Time", widget: "datetime" }
+              - { name: "endTime", label: "End Time", widget: "datetime", required: false }
+              - { name: "location", label: "Location", widget: "string" }
+              - { name: "image", label: "Image", widget: "image", required: false }
+              - { name: "imageAlt", label: "Image Alt Text", widget: "string", required: false }
+              - { name: "ctaText", label: "Button Text", widget: "string", required: false }
+              - { name: "ctaUrl", label: "Button URL", widget: "string", required: false }
+              - { name: "tags", label: "Tags", widget: "list", required: false }
+              - { name: "isFeatured", label: "Featured", widget: "boolean", required: false, default: false }
+
+      - name: "resources"
+        label: "Resources Page"
+        file: "src/content/resources/resources.json"
+        fields:
+          - { name: "title", label: "Page Title", widget: "string" }
+          - { name: "blurb", label: "Page Intro", widget: "text" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "id", label: "Section ID", widget: "string", required: false }
+              - { name: "title", label: "Section Title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - label: "Type"
+                    name: "type"
+                    widget: "select"
+                    options: ["link", "contact", "text", "document"]
+                  - { name: "title", label: "Title", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string", required: false }
+                  - { name: "description", label: "Description", widget: "text", required: false }
+                  - { name: "name", label: "Contact Name", widget: "string", required: false }
+                  - { name: "email", label: "Email", widget: "string", required: false }
+                  - { name: "phone", label: "Phone", widget: "string", required: false }
+                  - { name: "alternatePhone", label: "Alternate Phone", widget: "string", required: false }
+                  - { name: "notes", label: "Notes", widget: "text", required: false }
+                  - { name: "body", label: "Body Text", widget: "text", required: false }
+                  - { name: "fileType", label: "File Type", widget: "string", required: false }
 
   - name: "board"
-    label: "Board Members"
-    folder: "src/content/board"
-    create: true
-    slug: "{{slug}}"
-    extension: "json"
-    format: "json"
-    fields:
-      - { name: "name", label: "Name", widget: "string" }
-      - { name: "role", label: "Role", widget: "string" }
-      - { name: "email", label: "Email", widget: "string", required: false }
-      - { name: "photo", label: "Photo", widget: "image", required: false }
-      - { name: "bio", label: "Bio", widget: "text", required: false }
+    label: "Board"
+    files:
+      - name: "members"
+        label: "Board Members"
+        file: "src/content/board/board.json"
+        fields:
+          - label: "Members"
+            name: "members"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.role}}"
+            fields:
+              - { name: "name", label: "Name", widget: "string" }
+              - { name: "role", label: "Role", widget: "string" }
+              - { name: "email", label: "Email", widget: "string", required: false }
+              - { name: "photo", label: "Photo", widget: "image", required: false }
+              - { name: "bio", label: "Bio", widget: "text", required: false }
 
   - name: "gallery"
     label: "Gallery"
@@ -40,6 +121,7 @@ collections:
     fields:
       - { name: "title", label: "Title", widget: "string" }
       - { name: "image", label: "Image", widget: "image" }
+      - { name: "imageAlt", label: "Image Alt Text", widget: "string" }
       - { name: "caption", label: "Caption", widget: "text", required: false }
       - { name: "tags", label: "Tags", widget: "list", required: false }
 
@@ -58,16 +140,6 @@ collections:
           widget: "select",
           options: ["HOA", "Meeting Minutes", "Rules", "Events", "Other"]
         }
-      - { name: "file", label: "PDF / File", widget: "file", required: false }
-      - {
-          name: "externalUrl",
-          label: "External Link",
-          widget: "string",
-          required: false
-        }
-      - {
-          name: "description",
-          label: "Description",
-          widget: "text",
-          required: false
-        }
+      - { name: "file", label: "PDF / File", widget: "file", required: false, hint: "Upload a file or provide External Link below." }
+      - { name: "externalUrl", label: "External Link", widget: "string", required: false, hint: "Use if linking to another website instead of uploading a file." }
+      - { name: "description", label: "Description", widget: "text", required: false }

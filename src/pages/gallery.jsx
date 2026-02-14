@@ -15,16 +15,16 @@ export default function Gallery() {
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))"
         }}
       >
-        {items.map((it) => (
+        {items.map((item) => (
           <div
-            key={it.title}
+            key={item.title}
             style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12 }}
           >
             <h3 style={{ marginTop: 0 }}>{it.title}</h3>
-            {it.image ? (
+            {item.image ? (
               <img
-                src={it.image}
-                alt={it.title}
+                src={item.image}
+                alt={item.imageAlt || item.title}
                 style={{
                   width: "100%",
                   height: 240,
@@ -33,7 +33,9 @@ export default function Gallery() {
                 }}
               />
             ) : null}
-            {it.caption ? <p style={{ color: "#666" }}>{it.caption}</p> : null}
+            {item.caption ? (
+              <p style={{ color: "#666" }}>{item.caption}</p>
+            ) : null}
           </div>
         ))}
       </div>
