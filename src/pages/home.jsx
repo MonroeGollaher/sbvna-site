@@ -1,5 +1,6 @@
+import EmbeddedVideo from "../components/EmbeddedVideo";
 import home from "../content/home/home.json";
-import "./home.css";
+import "../styles/home.css";
 
 export default function Home() {
   return (
@@ -8,6 +9,8 @@ export default function Home() {
         <div className="hero__content">
           <h2 className="hero__title">{home.title}</h2>
           <p className="hero__subtitle">{home.intro}</p>
+          <p className="hero__blurb">{home.blurb}</p>
+          <a href="/about">Learn more</a>
         </div>
       </section>
 
@@ -32,6 +35,9 @@ export default function Home() {
             </p>
           </div>
         </div>
+      </section>
+      <section>
+        <EmbeddedVideo src="https://vimeo.com/561455388?fl=pl&fe=vl" />
       </section>
     </>
   );
