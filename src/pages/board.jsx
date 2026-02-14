@@ -1,6 +1,8 @@
 import board from "../content/board/board.json";
 
 export default function Board() {
+  const members = Array.isArray(board) ? board : board.members || [];
+
   return (
     <div className="page-wrapper">
       <h2>Meet the Board</h2>
@@ -12,7 +14,7 @@ export default function Board() {
           gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))"
         }}
       >
-        {board.map((member) => (
+        {members.map((member) => (
           <article
             key={member.name}
             style={{
