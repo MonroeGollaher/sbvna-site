@@ -28,11 +28,18 @@
           search.includes("recovery_token=") ||
           search.includes("confirmation_token=");
 
-        if (hasIdentityToken && window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", function () {
-            window.netlifyIdentity.open();
-          });
-          window.netlifyIdentity.init();
+        if (hasIdentityToken) {
+          if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", function () {
+              window.netlifyIdentity.open();
+            });
+          } else {
+            document.addEventListener("DOMContentLoaded", function () {
+              window.netlifyIdentity.on("init", function () {
+                window.netlifyIdentity.open();
+              });
+            });
+          }
         }
       })();
     </script>
