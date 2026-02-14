@@ -19,10 +19,14 @@
     <script>
       (function () {
         var hash = window.location.hash || "";
+        var search = window.location.search || "";
         var hasIdentityToken =
           hash.includes("invite_token=") ||
           hash.includes("recovery_token=") ||
-          hash.includes("confirmation_token=");
+          hash.includes("confirmation_token=") ||
+          search.includes("invite_token=") ||
+          search.includes("recovery_token=") ||
+          search.includes("confirmation_token=");
 
         if (hasIdentityToken && window.netlifyIdentity) {
           window.netlifyIdentity.on("init", function () {
