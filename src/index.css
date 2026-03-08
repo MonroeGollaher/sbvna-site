@@ -22,15 +22,20 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
 }
 
 a {
   color: var(--color-link);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 a:hover {
   color: var(--color-link-hover);
   text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
 }
 
 img {
@@ -39,6 +44,7 @@ img {
   display: block;
 }
 
+/* Headings use Raleway (clean sans-serif), body uses Fraunces (retro serif) */
 h1,
 h2,
 h3,
@@ -48,27 +54,16 @@ h6 {
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
   color: var(--color-text);
 }
 
-h1 {
-  font-size: 45px;
-}
-h2 {
-  font-size: 42px;
-}
-h3 {
-  font-size: 39px;
-}
-h4 {
-  font-size: 36px;
-}
-h5 {
-  font-size: 33px;
-}
-h6 {
-  font-size: 30px;
-}
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-base); }
 
 ul,
 ol {
@@ -81,31 +76,25 @@ ul {
 }
 
 li {
-  margin-bottom: 12px;
-  line-height: 1.7;
+  margin-bottom: var(--space-3);
+  line-height: var(--line-height-relaxed);
 }
 
 p {
   line-height: var(--line-height-relaxed);
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 32px;
-  }
-  h2 {
-    font-size: 28px;
-  }
-  h3 {
-    font-size: 25px;
-  }
-  h4 {
-    font-size: 22px;
-  }
-  h5 {
-    font-size: 20px;
-  }
-  h6 {
-    font-size: 18px;
-  }
+/* Selection color */
+::selection {
+  background: var(--color-brand-lighter);
+  color: var(--color-brand-dark);
+}
+
+@media (min-width: 768px) {
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: var(--font-size-4xl); }
+  h3 { font-size: var(--font-size-3xl); }
+  h4 { font-size: var(--font-size-2xl); }
+  h5 { font-size: var(--font-size-xl); }
+  h6 { font-size: var(--font-size-lg); }
 }

@@ -9,7 +9,7 @@
       "startTime": "2025-04-12T09:00:00-06:00",
       "endTime": "2025-04-12T12:00:00-06:00",
       "location": "Manitou Park",
-      "image": "https://placehold.co/200",
+      "image": "https://placehold.co/600x400/719843/ffffff?text=Spring+Cleanup",
       "imageAlt": "Volunteers cleaning up Manitou Park",
       "ctaText": "Learn more",
       "ctaUrl": "/documents/cleanup-details.pdf",
@@ -22,7 +22,7 @@
       "description": "Monthly SBVNA board meeting. Neighbors are encouraged to attend and participate.",
       "startTime": "2025-04-17T18:30:00-06:00",
       "location": "Garfield Elementary Library",
-      "image": "https://placehold.co/200",
+      "image": "https://placehold.co/600x400/3d7d7c/ffffff?text=Board+Meeting",
       "imageAlt": "Community board meeting",
       "tags": ["Meeting"]
     }

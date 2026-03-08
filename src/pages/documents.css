@@ -1,0 +1,34 @@
+.docs-section {
+  margin-top: var(--space-8);
+  text-align: left;
+}
+
+.docs-section__title {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-brand-lighter);
+}
+
+.doc-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.doc-card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.doc-card:hover .doc-card__image {
+  transform: scale(1.03);
+}
+
+.doc-card__body {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.doc-card__badge-row {
+  margin-bottom: var(--space-2);
+}

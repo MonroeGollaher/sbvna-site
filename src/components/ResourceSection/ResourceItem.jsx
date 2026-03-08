@@ -1,83 +1,80 @@
 import { isExternalUrl } from "./utils";
 
 const ResourceItem = ({ item }) => {
+  const ext = item.url && isExternalUrl(item.url);
+
   switch (item.type) {
     case "link":
       return (
-        <li>
-          <strong>{item.title}</strong>
-          {item.description ? <> — {item.description}</> : null}
-          {item.url ? (
-            <>
-              {" "}
-              (
-              <a
-                href={item.url}
-                target={isExternalUrl(item.url) ? "_blank" : undefined}
-                rel={isExternalUrl(item.url) ? "noreferrer" : undefined}
-              >
-                Open link
-              </a>
-              )
-            </>
+        <a
+          className="resource-card"
+          href={item.url}
+          target={ext ? "_blank" : undefined}
+          rel={ext ? "noreferrer" : undefined}
+        >
+          <strong className="resource-card__title">{item.title}</strong>
+          {item.description ? (
+            <span className="resource-card__desc">{item.description}</span>
           ) : null}
-        </li>
+          <span className="resource-card__action">Visit &rarr;</span>
+        </a>
       );
 
     case "document":
       return (
-        <li>
-          <strong>{item.title}</strong>
-          {item.fileType ? <> ({item.fileType.toUpperCase()})</> : null}
-          {item.url ? (
-            <>
-              {" "}
-              —{" "}
-              <a
-                href={item.url}
-                target={isExternalUrl(item.url) ? "_blank" : undefined}
-                rel={isExternalUrl(item.url) ? "noreferrer" : undefined}
-              >
-                Open
-              </a>
-            </>
+        <a
+          className="resource-card"
+          href={item.url}
+          target={ext ? "_blank" : undefined}
+          rel={ext ? "noreferrer" : undefined}
+        >
+          <strong className="resource-card__title">{item.title}</strong>
+          {item.fileType ? (
+            <span className="badge">{item.fileType.toUpperCase()}</span>
           ) : null}
-        </li>
+          <span className="resource-card__action">Open &rarr;</span>
+        </a>
       );
 
     case "contact":
       return (
-        <li>
-          <strong>{item.title}</strong>
-          {item.name ? <> — {item.name}</> : null}
-          <div>
+        <div className="resource-card">
+          <strong className="resource-card__title">{item.title}</strong>
+          {item.name ? (
+            <span className="resource-card__desc">{item.name}</span>
+          ) : null}
+          <div className="resource-card__details">
             {item.email ? (
-              <div>
-                Email: <a href={`mailto:${item.email}`}>{item.email}</a>
-              </div>
+              <span>
+                <a href={`mailto:${item.email}`}>{item.email}</a>
+              </span>
             ) : null}
-            {item.phone ? <div>Phone: {item.phone}</div> : null}
-            {item.alternatePhone ? <div>Alt: {item.alternatePhone}</div> : null}
-            {item.notes ? <div>Notes: {item.notes}</div> : null}
+            {item.phone ? <span>{item.phone}</span> : null}
+            {item.alternatePhone ? <span>{item.alternatePhone}</span> : null}
+            {item.notes ? (
+              <span className="resource-card__note">{item.notes}</span>
+            ) : null}
           </div>
-        </li>
+        </div>
       );
 
     case "text":
       return (
-        <li>
-          <strong>{item.title}</strong>
+        <div className="resource-card">
+          <strong className="resource-card__title">{item.title}</strong>
           {item.body ? (
-            <div style={{ whiteSpace: "pre-wrap" }}>{item.body}</div>
+            <span className="resource-card__desc">{item.body}</span>
           ) : null}
-        </li>
+        </div>
       );
 
     default:
       return (
-        <li>
-          <strong>{item.title || "Untitled item"}</strong>
-        </li>
+        <div className="resource-card">
+          <strong className="resource-card__title">
+            {item.title || "Untitled item"}
+          </strong>
+        </div>
       );
   }
 };

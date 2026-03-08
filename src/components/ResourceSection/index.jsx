@@ -5,20 +5,19 @@ const ResourceSection = ({ section }) => {
   const { id, title, description, items = [] } = section;
 
   return (
-    <section style={{ marginTop: 24 }} id={id}>
-      <h3>{title}</h3>
-
-      {description ? <p>{description}</p> : null}
+    <section className="resource-section" id={id}>
+      <h3 className="resource-section__title">{title}</h3>
+      {description ? <p className="resource-section__desc">{description}</p> : null}
 
       {items.length > 0 ? (
-        <ul>
+        <div className="resource-grid">
           {items.map((item, idx) => (
             <ResourceItem
               key={item.id || `${id || title}-${idx}`}
               item={item}
             />
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No resources listed.</p>
       )}

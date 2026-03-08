@@ -3,8 +3,10 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--color-bg-raised);
-  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg-raised) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
 }
 
 .header__inner {
@@ -32,14 +34,18 @@
 }
 
 .brand__title {
+  font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
-  font-size: 1.05rem;
-  letter-spacing: 0.2px;
+  font-size: 1.1rem;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
 }
 
 .brand__subtitle {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.3px;
 }
 
 /* ===== Nav links ===== */
@@ -52,16 +58,22 @@
 .nav-link {
   text-decoration: none;
   color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  padding: var(--space-2) var(--space-2);
+  padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
-  transition: background var(--transition-fast);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .nav-link:hover {
   background: var(--color-bg-sunken);
   text-decoration: none;
   color: var(--color-text);
+  transform: translateY(-1px);
 }
 
 .nav-link--active {

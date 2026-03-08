@@ -1,8 +1,12 @@
 import EmbeddedVideo from "../components/EmbeddedVideo";
+import useScrollReveal from "../hooks/useScrollReveal";
 import home from "../content/home/home.json";
 import "../styles/home.css";
 
 export default function Home() {
+  const posterRef = useScrollReveal();
+  // const videoRef = useScrollReveal();
+
   return (
     <>
       <section className="hero">
@@ -10,11 +14,13 @@ export default function Home() {
           <h2 className="hero__title">{home.title}</h2>
           <p className="hero__subtitle">{home.intro}</p>
           <p className="hero__blurb">{home.blurb}</p>
-          <a href="/about" className="hero__btn">Learn more</a>
+          <a href="/about" className="hero__btn">
+            Learn more
+          </a>
         </div>
       </section>
 
-      <section className="poster">
+      <section className="poster reveal" ref={posterRef}>
         <div className="poster__inner">
           <img
             className="poster__image"
@@ -36,9 +42,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section>
+      {/* <section className="reveal" ref={videoRef}>
         <EmbeddedVideo src="https://vimeo.com/561455388?fl=pl&fe=vl" />
-      </section>
+      </section> */}
     </>
   );
 }

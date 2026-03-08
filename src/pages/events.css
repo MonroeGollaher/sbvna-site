@@ -1,0 +1,34 @@
+.events-grid {
+  margin-top: var(--space-6);
+}
+
+.event-card {
+  overflow: hidden;
+  padding: 0;
+  text-align: left;
+}
+
+.event-card__image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-card__image {
+  transform: scale(1.03);
+}
+
+.event-card__body {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.event__location {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.event__description {
+  white-space: pre-wrap;
+}

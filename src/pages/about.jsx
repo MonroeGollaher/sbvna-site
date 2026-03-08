@@ -1,4 +1,7 @@
+import { useState } from "react";
 import about from "../content/about/about.json";
+import ScrollReveal from "../components/ScrollReveal";
+import Lightbox from "../components/Lightbox";
 import "./about.css";
 
 function renderBlurb(text) {
@@ -36,45 +39,53 @@ function renderBlurb(text) {
 }
 
 export default function About() {
+  const [lightbox, setLightbox] = useState(null);
+
   return (
     <div className="page-wrapper">
-      <h2>{about.title}</h2>
-      <p>{about.blurb}</p>
-      <img
-        src={about.headerImage}
-        alt={about.headerImageAlt || ""}
-        style={{
-          width: "100%",
-          maxWidth: 900,
-          borderRadius: 12,
-          margin: "12px auto",
-          display: "block"
-        }}
-        loading="lazy"
-      />
-      {about.sections.map((section) => (
-        <div key={section.title} className="about-section">
+      <h2 className="animate-fade-up">{about.title}</h2>
+      <p className="animate-fade-up delay-1">{about.blurb}</p>
+      <ScrollReveal>
+        <div
+          className="about-image-card"
+          onClick={() => setLightbox({ src: about.headerImage, alt: about.headerImageAlt || "" })}
+        >
+          <img
+            src={about.headerImage}
+            alt={about.headerImageAlt || ""}
+            loading="lazy"
+          />
+        </div>
+      </ScrollReveal>
+      {about.sections.map((section, i) => (
+        <ScrollReveal key={section.title} className="about-section" delay={i * 0.05}>
           <h3>{section.title}</h3>
           {renderBlurb(section.blurb)}
           {section.image ? (
             <>
-              <img
-                src={section.image}
-                alt={section.imageAlt || section.title}
-                style={{
-                  width: "100%",
-                  maxWidth: 900,
-                  borderRadius: 12,
-                  margin: "12px auto",
-                  display: "block"
-                }}
-                loading="lazy"
-              />
+              <div
+                className="about-image-card"
+                onClick={() => setLightbox({ src: section.image, alt: section.imageAlt || section.title })}
+              >
+                <img
+                  src={section.image}
+                  alt={section.imageAlt || section.title}
+                  loading="lazy"
+                />
+              </div>
               <p className="caption">{section.imageCaption}</p>
             </>
           ) : null}
-        </div>
+        </ScrollReveal>
       ))}
+
+      {lightbox ? (
+        <Lightbox
+          src={lightbox.src}
+          alt={lightbox.alt}
+          onClose={() => setLightbox(null)}
+        />
+      ) : null}
     </div>
   );
 }

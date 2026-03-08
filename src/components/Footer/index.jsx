@@ -4,31 +4,43 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__inner">
-        <h3 className="footer__title">Contact Us</h3>
+        <div className="footer__content">
+          <div className="footer__info">
+            <h3 className="footer__title">Contact Us</h3>
 
-        <p>
-          Have questions, concerns, or ideas for the neighborhood? We'd love to
-          hear from you.
-        </p>
+            <p>
+              Have questions, concerns, or ideas for the neighborhood? We'd love
+              to hear from you.
+            </p>
 
-        <div className="footer__contact">
-          <p>
-            <strong>Email:</strong>{" "}
-            <a href="mailto:sbvnaboise@gmail.com">sbvnaboise@gmail.com</a>
-          </p>
+            <div className="footer__contact">
+              <p>
+                <strong>Email:</strong>{" "}
+                <a href="mailto:sbvnaboise@gmail.com">sbvnaboise@gmail.com</a>
+              </p>
 
-          <p>
-            <strong>Neighborhood Association:</strong>
-            <br />
-            South Boise Village Neighborhood Association (SBVNA)
-          </p>
+              <p>
+                <strong>Neighborhood Association:</strong>
+                <br />
+                South Boise Village Neighborhood Association (SBVNA)
+              </p>
 
-          <p>
-            <strong>Meetings:</strong>
-            <br />
-            Board meetings are open to all residents. Dates and locations are
-            posted on this website.
-          </p>
+              <p>
+                <strong>Meetings:</strong>
+                <br />
+                Board meetings are open to all residents. Dates and locations are
+                posted on this website.
+              </p>
+            </div>
+          </div>
+
+          <div className="footer__badge">
+            <img
+              src="/images/sbvna-badge.png"
+              alt="SBVNA badge"
+              loading="lazy"
+            />
+          </div>
         </div>
 
         <p className="footer__copyright">

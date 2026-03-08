@@ -27,13 +27,40 @@
   font-size: var(--font-size-base);
 }
 
-.about-section img {
-  margin: var(--space-4) auto;
-}
-
 .about-section .caption {
   font-style: italic;
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   margin-top: var(--space-2);
+}
+
+/* ===== About image card (poster-style hover, click to expand) ===== */
+.about-image-card {
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  max-width: 420px;
+  margin: var(--space-6) auto;
+  cursor: zoom-in;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.about-image-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-strong);
+}
+
+.about-image-card img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease;
+}
+
+.about-image-card:hover img {
+  transform: scale(1.02);
 }
