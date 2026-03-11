@@ -25,7 +25,9 @@
     },
     {
       "title": "Projects",
-      "blurb": "The triangle parks along Boise Avenue with obelisks marking the Oregon Trail are the work of the SBVNA, as are the signs at strategic entrances to the neighborhood and at Manitou Park. Funding for these projects was obtained through grants written by Association volunteers. \n SBVNA tracks activities and/or plans that may impact residents, for example, new construction, new businesses, changes in zoning or traffic patterns, etc. By presenting a united front to city and county agencies, residents have much more clout than the individuals who would feel the impact the most. Together we are strong."
+      "layout": "flex",
+      "image": "/images/oregon-trail-marker.jpg",
+      "blurb": "The triangle parks along Boise Avenue with obelisks marking the Oregon Trail are the work of the SBVNA, as are the signs at strategic entrances to the neighborhood and at Manitou Park. Funding for these projects was obtained through grants written by Association volunteers. \n\n SBVNA tracks activities and/or plans that may impact residents, for example, new construction, new businesses, changes in zoning or traffic patterns, etc. By presenting a united front to city and county agencies, residents have much more clout than the individuals who would feel the impact the most. Together we are strong."
     }
   ]
 }

@@ -1,6 +1,6 @@
 import eventsPage from "../content/events/events.json";
 import ScrollReveal from "../components/ScrollReveal";
-import "./events.css";
+import "../styles/events.css";
 
 export default function Events() {
   const { title, blurb, events } = eventsPage;
@@ -20,7 +20,11 @@ export default function Events() {
           const end = event.endTime ? new Date(event.endTime) : null;
 
           return (
-            <ScrollReveal as="article" key={event.id} className="card event-card">
+            <ScrollReveal
+              as="article"
+              key={event.id}
+              className="card event-card"
+            >
               {event.image ? (
                 <img
                   className="event-card__image"

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
-import "./documents.css";
+import "../styles/documents.css";
 
 const docModules = import.meta.glob("../content/documents/*.json", {
   eager: true
@@ -47,9 +47,9 @@ export default function Documents() {
       groups[cat].push(d);
     }
 
-    return SECTION_ORDER
-      .filter((cat) => groups[cat] && groups[cat].length > 0)
-      .map((cat) => ({ category: cat, docs: groups[cat] }));
+    return SECTION_ORDER.filter(
+      (cat) => groups[cat] && groups[cat].length > 0
+    ).map((cat) => ({ category: cat, docs: groups[cat] }));
   }, [docs, query, category]);
 
   return (

@@ -1,4 +1,4 @@
-import useScrollReveal from "../hooks/useScrollReveal";
+import useScrollReveal from "../utils/useScrollReveal";
 
 export default function ScrollReveal({
   children,

@@ -1,5 +1,5 @@
 import EmbeddedVideo from "../components/EmbeddedVideo";
-import useScrollReveal from "../hooks/useScrollReveal";
+import useScrollReveal from "../utils/useScrollReveal";
 import home from "../content/home/home.json";
 import "../styles/home.css";
 

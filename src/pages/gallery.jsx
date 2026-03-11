@@ -1,5 +1,5 @@
 import ScrollReveal from "../components/ScrollReveal";
-import "./gallery.css";
+import "../styles/gallery.css";
 
 const galleryModules = import.meta.glob("../content/gallery/*.json", {
   eager: true
@@ -23,9 +23,7 @@ export default function Gallery() {
               />
             ) : null}
             <h3 className="card__title">{item.title}</h3>
-            {item.caption ? (
-              <p className="card__meta">{item.caption}</p>
-            ) : null}
+            {item.caption ? <p className="card__meta">{item.caption}</p> : null}
           </ScrollReveal>
         ))}
       </div>
