@@ -9,10 +9,12 @@ import Events from "./pages/events.jsx";
 import Resources from "./pages/resources.jsx";
 import Admin from "./pages/admin.jsx";
 import Footer from "./components/Footer/index.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 export default function App() {
   return (
     <div>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
