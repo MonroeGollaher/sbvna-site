@@ -1,0 +1,46 @@
+/* ===== Board member modal ===== */
+.board-modal {
+  max-width: 560px;
+}
+
+.board-modal__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.board-modal__photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.board-modal__name {
+  margin: 0;
+  font-size: var(--font-size-xl);
+}
+
+.board-modal__role {
+  margin: var(--space-1) 0 0;
+  color: var(--color-brand);
+  font-family: var(--font-family-heading, Raleway, sans-serif);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.board-modal__bio p {
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.board-modal__bio p:last-child {
+  margin-bottom: 0;
+}
