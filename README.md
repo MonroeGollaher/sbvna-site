@@ -1,6 +1,6 @@
 # SBVNA Site
 
-The official website for the South Boise Village Neighborhood Association. I built this with React and Vite, with content managed through Decap CMS so board members can update the site without touching code.
+Website for the South Boise Village Neighborhood Association. I built this with React and Vite, with content managed through Decap CMS so board members can update the site without touching code.
 
 ## Tech Stack
 
