@@ -1,5 +1,11 @@
 {
   "title": "Welcome!",
   "intro": " This site shares announcements, events, photos, and key documents.",
-  "blurb": "South Boise Village offers a blend of historic charm, walkability, and close-in city access. It’s a lively yet relaxed neighborhood with parks, independent eateries, and a diverse community, all just minutes from downtown Boise and the Boise State University campus."
+  "blurb": "South Boise Village offers a blend of historic charm, walkability, and close-in city access. It’s a lively yet relaxed neighborhood with parks, independent eateries, and a diverse community, all just minutes from downtown Boise and the Boise State University campus.",
+  "banner": {
+    "enabled": true,
+    "message": "Spring Cleanup is April 12th at Manitou Park — come join us!",
+    "linkText": "View events",
+    "linkUrl": "/events"
+  }
 }

@@ -1,0 +1,74 @@
+/* ===== Announcement banner ===== */
+.announcement-banner {
+  background: var(--color-brand);
+  color: #fff;
+  overflow: hidden;
+  animation: banner-slide-down 0.4s ease both;
+}
+
+.announcement-banner__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.announcement-banner__message {
+  margin: 0;
+  font-family: Raleway, sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wide);
+  text-align: center;
+}
+
+.announcement-banner__link {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 700;
+  transition: opacity 0.2s ease;
+}
+
+.announcement-banner__link:hover {
+  opacity: 0.85;
+}
+
+.announcement-banner__close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+}
+
+.announcement-banner__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes banner-slide-down {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-banner {
+    animation: none;
+  }
+}

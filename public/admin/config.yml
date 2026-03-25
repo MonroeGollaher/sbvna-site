@@ -16,6 +16,15 @@ collections:
           - { name: "title", label: "Title", widget: "string" }
           - { name: "intro", label: "Intro", widget: "text" }
           - { name: "blurb", label: "Blurb", widget: "text" }
+          - label: "Announcement Banner"
+            name: "banner"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "enabled", label: "Show Banner", widget: "boolean", default: false, hint: "Toggle the announcement banner on the home page" }
+              - { name: "message", label: "Message", widget: "string", required: false }
+              - { name: "linkText", label: "Link Text", widget: "string", required: false, hint: "e.g. View events" }
+              - { name: "linkUrl", label: "Link URL", widget: "string", required: false, hint: "e.g. /events" }
 
       - name: "about"
         label: "About"

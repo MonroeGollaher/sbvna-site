@@ -1,4 +1,5 @@
 import EmbeddedVideo from "../components/EmbeddedVideo";
+import AnnouncementBanner from "../components/AnnouncementBanner";
 import useScrollReveal from "../utils/useScrollReveal";
 import home from "../content/home/home.json";
 import "../styles/home.css";
@@ -9,6 +10,7 @@ export default function Home() {
 
   return (
     <>
+      <AnnouncementBanner banner={home.banner} />
       <section className="hero">
         <div className="hero__content">
           <h2 className="hero__title">{home.title}</h2>

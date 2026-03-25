@@ -1,3 +1,63 @@
+/* ===== Tabs ===== */
+.events-tabs {
+  display: inline-flex;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  border-bottom: 2px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+  border-bottom: none;
+}
+
+.events-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5) var(--space-3);
+  background: none;
+  border: none;
+  font-family: Raleway, sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.events-tab:hover {
+  color: var(--color-text);
+}
+
+.events-tab--active {
+  color: var(--color-brand);
+  border-bottom-color: var(--color-brand);
+}
+
+.events-tab__count {
+  font-size: 0.7rem;
+  background: var(--color-brand-lighter);
+  color: var(--color-brand);
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.events-tab--active .events-tab__count {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+.events-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: var(--space-8);
+}
+
+/* ===== Grid ===== */
 .events-grid {
   margin-top: var(--space-6);
 }
