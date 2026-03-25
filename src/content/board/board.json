@@ -1,6 +1,7 @@
-[
-  {
-    "name": "Ryan Shackleford",
+{
+  "members": [
+    {
+      "name": "Ryan Shackleford",
     "role": "President",
     "photo": "/images/board-members/ryan.avif",
     "bio": "Ryan grew up in South Boise and jumped at the opportunity to return four years ago. Having completed medical training and worked in big cities in family medicine and psychiatry, it was always his intent to return to his roots and to set up a practice near his parents and sibling. He remembers an idyllic childhood roaming the neighborhoods of Southeast Boise and wants to re-create the same for his children.\n\nA lot changed in the intervening decades. Being a child, parent, and/or grandparent has never been more difficult. Being connected to each other has never been more difficult. Many feel isolated, stressed out, frustrated and depressed. Ryan is committed to contributing to his local community with skills developed educating and providing interventions for emotional health and well-being.\n\nHe works in a Federally Qualified Health Center in town, providing care to those with poor access to behavioral health services. He also teaches resident physicians in family medicine and psychiatry how to provide excellent care. Finally, he owns a small, private psychotherapy practice on the bench which specializes in intensive short-term psychotherapy and medication-assisted psychotherapy (psychedelics, the wave of the future!).\n\nRyan participates in the Idaho State Behavioral Health Planning Committee and in research through the Family Medicine Residency of Idaho, in addition to a few other local projects dear to his heart. He’s a member of the Garfield Elementary School PTO where both of his children go to school, and where his sister teaches. Ryan believes a strong public education system is the only way to sustain a healthy, happy, and equitable community.\n\nRyan credits his amazing wife, Rhiana, with the idea and implementation of the new Garfield Walking Path, but don’t be fooled. Ryan contributed also. Serving on the SBV Board is an important project representing a diverse and inclusive community."
@@ -52,5 +53,6 @@
     "role": "Director",
     "photo": "/images/board-members/karen.avif",
     "bio": "My name is Karen Drummey. My husband, Ken Wipff and I bought our house on Garfield Street in 2020, and after extensive renovations, moved up here permanently the end of 2021. However, our ties to this neighborhood go back to 2012 when our daughter was attending BSU and we bought a house on Michigan Street. I’ve always enjoyed the energy of this neighborhood—children riding bikes, people out walking, with or without a dog or two.\n\nI want to help preserve this uniqueness and keep this such an enjoyable place to live."
-  }
-]
+    }
+  ]
+}
