@@ -3,27 +3,44 @@
   "blurb": "South Boise Village hosts events throughout the year that bring neighbors together—community cleanups, park gatherings, meetings, and seasonal celebrations. Everyone is welcome to attend.",
   "events": [
     {
-      "id": "spring-cleanup-2025",
-      "title": "Spring Neighborhood Cleanup",
-      "description": "Join neighbors for our annual spring cleanup. Bags, gloves, and refreshments will be provided. All ages welcome.",
-      "startTime": "2025-04-12T09:00:00-06:00",
-      "endTime": "2025-04-12T12:00:00-06:00",
+      "id": "compost-giveaway-2026",
+      "title": "Compost Giveaway",
+      "description": "Free compost available for neighbors — bring your own bags or containers.",
+      "startTime": "2026-04-18T09:00:00-06:00",
       "location": "Manitou Park",
-      "image": "https://placehold.co/600x400/719843/ffffff?text=Spring+Cleanup",
-      "imageAlt": "Volunteers cleaning up Manitou Park",
-      "ctaText": "Learn more",
-      "ctaUrl": "/documents/cleanup-details.pdf",
-      "tags": ["Community", "Volunteer"],
-      "isFeatured": true
+      "tags": ["Community"]
     },
     {
-      "id": "monthly-board-meeting-apr",
-      "title": "April Board Meeting",
-      "description": "Monthly SBVNA board meeting. Neighbors are encouraged to attend and participate.",
-      "startTime": "2025-04-17T18:30:00-06:00",
-      "location": "Garfield Elementary Library",
-      "image": "https://placehold.co/600x400/3d7d7c/ffffff?text=Board+Meeting",
-      "imageAlt": "Community board meeting",
+      "id": "board-meeting-may-2026",
+      "title": "May Board Meeting",
+      "description": "Special topics: ACHD's South Boise Transportation Plan and BSU's 10-Year Campus Master Plan. Neighbors are encouraged to attend and participate.",
+      "startTime": "2026-05-12T18:30:00-06:00",
+      "location": "Gazebo in Manitou Park",
+      "tags": ["Meeting"]
+    },
+    {
+      "id": "board-meeting-aug-2026",
+      "title": "August Board Meeting",
+      "description": "Quarterly neighborhood association board meeting. Neighbors are encouraged to attend and participate.",
+      "startTime": "2026-08-11T18:30:00-06:00",
+      "location": "Gazebo in Manitou Park",
+      "tags": ["Meeting"]
+    },
+    {
+      "id": "ice-cream-social-2026",
+      "title": "Ice Cream Social",
+      "description": "Come enjoy ice cream and get to know your neighbors! All ages welcome.",
+      "startTime": "2026-08-22T14:00:00-06:00",
+      "endTime": "2026-08-22T16:00:00-06:00",
+      "location": "Manitou Park",
+      "tags": ["Community", "Social"]
+    },
+    {
+      "id": "annual-meeting-2026",
+      "title": "Annual Meeting",
+      "description": "SBVNA annual meeting. Review the year's activities and plan ahead. All residents welcome.",
+      "startTime": "2026-09-17T18:30:00-06:00",
+      "location": "Garfield Elementary",
       "tags": ["Meeting"]
     }
   ]

@@ -1,16 +1,52 @@
+import { useMemo } from "react";
 import EmbeddedVideo from "../components/EmbeddedVideo";
 import AnnouncementBanner from "../components/AnnouncementBanner";
 import useScrollReveal from "../utils/useScrollReveal";
 import home from "../content/home/home.json";
+import eventsPage from "../content/events/events.json";
 import "../styles/home.css";
+
+function getNextEventBanner(events) {
+  const now = new Date();
+  const oneMonthOut = new Date(now);
+  oneMonthOut.setMonth(oneMonthOut.getMonth() + 1);
+
+  const upcoming = events
+    .filter((e) => {
+      const start = new Date(e.startTime);
+      return start > now && start <= oneMonthOut;
+    })
+    .sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+
+  if (upcoming.length === 0) return null;
+
+  const next = upcoming[0];
+  const date = new Date(next.startTime);
+  const formatted = date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  });
+
+  return {
+    enabled: true,
+    message: `${next.title} — ${formatted} at ${next.location}`,
+    linkText: "View events",
+    linkUrl: "/events",
+  };
+}
 
 export default function Home() {
   const posterRef = useScrollReveal();
   // const videoRef = useScrollReveal();
 
+  const banner = useMemo(() => {
+    const eventBanner = getNextEventBanner(eventsPage.events || []);
+    return eventBanner || home.banner;
+  }, []);
+
   return (
     <>
-      <AnnouncementBanner banner={home.banner} />
+      <AnnouncementBanner banner={banner} />
       <section className="hero">
         <div className="hero__content">
           <h2 className="hero__title">{home.title}</h2>

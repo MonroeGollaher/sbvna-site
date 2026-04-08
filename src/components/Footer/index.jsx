@@ -28,8 +28,8 @@ export default function Footer() {
               <p>
                 <strong>Meetings:</strong>
                 <br />
-                Board meetings are open to all residents. Dates and locations are
-                posted on this website.
+                Board meetings are open to all residents. Dates and locations
+                are posted on this website.
               </p>
             </div>
           </div>
