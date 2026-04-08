@@ -7,11 +7,13 @@ const STORAGE_KEY = "sbvna-banner-dismissed";
 export default function AnnouncementBanner({ banner }) {
   const [visible, setVisible] = useState(false);
 
+  const dismissKey = banner?.title || banner?.message;
+
   useEffect(() => {
     if (!banner?.enabled) return;
 
     const dismissed = sessionStorage.getItem(STORAGE_KEY);
-    if (dismissed === banner.message) return;
+    if (dismissed === dismissKey) return;
 
     // Small delay so it fades in after the page renders
     const timer = setTimeout(() => setVisible(true), 300);
@@ -22,7 +24,7 @@ export default function AnnouncementBanner({ banner }) {
 
   function dismiss() {
     setVisible(false);
-    sessionStorage.setItem(STORAGE_KEY, banner.message);
+    sessionStorage.setItem(STORAGE_KEY, dismissKey);
   }
 
   function handleKeyDown(e) {
@@ -38,7 +40,14 @@ export default function AnnouncementBanner({ banner }) {
     >
       <div className="announcement-banner__inner">
         <p className="announcement-banner__message">
-          {banner.message}
+          {banner.title ? (
+            <>
+              {banner.title}
+              {banner.date ? ` — ${banner.date}` : null}
+            </>
+          ) : (
+            banner.message
+          )}
           {banner.linkText && banner.linkUrl ? (
             <>
               {" "}

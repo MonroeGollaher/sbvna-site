@@ -29,7 +29,8 @@ function getNextEventBanner(events) {
 
   return {
     enabled: true,
-    message: `${next.title} — ${formatted} at ${next.location}`,
+    title: next.title,
+    date: `${formatted}${next.location ? ` · ${next.location}` : ""}`,
     linkText: "View events",
     linkUrl: "/events",
   };
