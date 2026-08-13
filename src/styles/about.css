@@ -64,6 +64,10 @@
 
 /* ===== About image card (poster-style hover, click to expand) ===== */
 .about-image-card {
+  display: block;
+  width: 100%;
+  font: inherit;
+  color: inherit;
   background: var(--color-bg-raised);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);

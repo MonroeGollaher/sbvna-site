@@ -2,14 +2,19 @@
   display: inline-block;
   background: var(--color-bg-raised);
   padding: 8px 8px 28px;
+  border: 0;
   border-radius: 2px;
   box-shadow: var(--shadow-md);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  cursor: pointer;
   text-align: center;
   text-decoration: none;
+  font: inherit;
   color: var(--color-text);
   width: 190px;
+}
+
+.polaroid--clickable {
+  cursor: pointer;
 }
 
 .polaroid:hover {

@@ -1,22 +1,22 @@
-import { useEffect } from "react";
+import useDialog from "../../utils/useDialog";
 import "./styles.css";
 
-export default function Modal({ onClose, children, className = "" }) {
-  useEffect(() => {
-    function onKeyDown(e) {
-      if (e.key === "Escape") onClose();
-    }
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [onClose]);
+export default function Modal({
+  onClose,
+  children,
+  className = "",
+  label = "Dialog"
+}) {
+  const dialogRef = useDialog(onClose);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={label}
+        tabIndex={-1}
         className={`modal ${className}`}
         onClick={(e) => e.stopPropagation()}
       >

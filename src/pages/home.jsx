@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import EmbeddedVideo from "../components/EmbeddedVideo";
 import AnnouncementBanner from "../components/AnnouncementBanner";
 import useScrollReveal from "../utils/useScrollReveal";
+import usePageMeta from "../utils/usePageMeta";
 import home from "../content/home/home.json";
 import eventsPage from "../content/events/events.json";
 import "../styles/home.css";
@@ -24,19 +25,25 @@ function getNextEventBanner(events) {
   const date = new Date(next.startTime);
   const formatted = date.toLocaleDateString("en-US", {
     month: "long",
-    day: "numeric",
+    day: "numeric"
   });
+
+  const where = next.location ? ` at ${next.location}` : "";
 
   return {
     enabled: true,
-    title: next.title,
-    date: `${formatted}${next.location ? ` · ${next.location}` : ""}`,
+    message: `${next.title} — ${formatted}${where}`,
     linkText: "View events",
-    linkUrl: "/events",
+    linkUrl: "/events"
   };
 }
 
 export default function Home() {
+  usePageMeta({
+    description:
+      "The South Boise Village Neighborhood Association serves the historic South Boise Village neighborhood in Boise, Idaho. Find upcoming events, board members, meeting minutes, bylaws, and neighborhood resources."
+  });
+
   const posterRef = useScrollReveal();
   // const videoRef = useScrollReveal();
 
@@ -50,7 +57,7 @@ export default function Home() {
       <AnnouncementBanner banner={banner} />
       <section className="hero">
         <div className="hero__content">
-          <h2 className="hero__title">{home.title}</h2>
+          <h1 className="hero__title">{home.title}</h1>
           <p className="hero__subtitle">{home.intro}</p>
           <p className="hero__blurb">{home.blurb}</p>
           <a href="/about" className="hero__btn">

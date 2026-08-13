@@ -3,14 +3,31 @@ import { NavLink, useLocation } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
 import "./styles.css";
 
+const NAV_LINKS = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About", mobileLabel: "About South Boise Village" },
+  { to: "/board", label: "Meet the Board", mobileLabel: "Board" },
+  { to: "/events", label: "Events" },
+  { to: "/gallery", label: "Gallery" },
+  { to: "/documents", label: "Documents" },
+  { to: "/resources", label: "Resources" }
+];
+
+function linkClass({ isActive }) {
+  return isActive ? "nav-link nav-link--active" : "nav-link";
+}
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  // Close the mobile menu on route change by adjusting state during render,
+  // rather than in an effect (avoids a cascading second render).
+  const [lastPath, setLastPath] = useState(location.pathname);
+  if (lastPath !== location.pathname) {
+    setLastPath(location.pathname);
     setIsOpen(false);
-  }, [location.pathname]);
+  }
 
   // Close on Escape
   useEffect(() => {
@@ -21,8 +38,14 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const linkClass = ({ isActive }) =>
-    isActive ? "nav-link nav-link--active" : "nav-link";
+  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    if (!isOpen) return;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
     <header className="header">
@@ -34,27 +57,11 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="nav nav--desktop" aria-label="Main navigation">
-          <NavLink to="/" className={linkClass}>
-            Home
-          </NavLink>
-          <NavLink to="/about" className={linkClass}>
-            About
-          </NavLink>
-          <NavLink to="/board" className={linkClass}>
-            Meet the Board
-          </NavLink>
-          <NavLink to="/events" className={linkClass}>
-            Events
-          </NavLink>
-          <NavLink to="/gallery" className={linkClass}>
-            Gallery
-          </NavLink>
-          <NavLink to="/documents" className={linkClass}>
-            Documents
-          </NavLink>
-          <NavLink to="/resources" className={linkClass}>
-            Resources
-          </NavLink>
+          {NAV_LINKS.map(({ to, label }) => (
+            <NavLink key={to} to={to} className={linkClass} end={to === "/"}>
+              {label}
+            </NavLink>
+          ))}
 
           <a className="nav-link nav-link--button" href="/admin/">
             Admin
@@ -81,33 +88,18 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — inert while collapsed so links stay out of the tab order */}
       <div
         id="mobile-menu"
         className={isOpen ? "mobile-menu mobile-menu--open" : "mobile-menu"}
+        inert={!isOpen}
       >
         <nav className="nav nav--mobile" aria-label="Mobile navigation">
-          <NavLink to="/" className={linkClass}>
-            Home
-          </NavLink>
-          <NavLink to="/about" className={linkClass}>
-            About South Boise Village
-          </NavLink>
-          <NavLink to="/board" className={linkClass}>
-            Board
-          </NavLink>
-          <NavLink to="/events" className={linkClass}>
-            Events
-          </NavLink>
-          <NavLink to="/gallery" className={linkClass}>
-            Gallery
-          </NavLink>
-          <NavLink to="/documents" className={linkClass}>
-            Documents
-          </NavLink>
-          <NavLink to="/resources" className={linkClass}>
-            Resources
-          </NavLink>
+          {NAV_LINKS.map(({ to, label, mobileLabel }) => (
+            <NavLink key={to} to={to} className={linkClass} end={to === "/"}>
+              {mobileLabel || label}
+            </NavLink>
+          ))}
 
           <a className="nav-link nav-link--button" href="/admin/">
             Admin

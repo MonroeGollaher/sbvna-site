@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
+import usePageMeta from "../utils/usePageMeta";
 import "../styles/documents.css";
 
 const docModules = import.meta.glob("../content/documents/*.json", {
@@ -15,8 +16,22 @@ const SECTION_ORDER = [
   "Misc"
 ];
 
+const docs = Object.values(docModules).map((m) => m.default || m);
+
+function orderCategories(present) {
+  const known = SECTION_ORDER.filter((c) => present.includes(c));
+  const unknown = present
+    .filter((c) => !SECTION_ORDER.includes(c))
+    .sort((a, b) => a.localeCompare(b));
+  return [...known, ...unknown];
+}
+
 export default function Documents() {
-  const docs = Object.values(docModules).map((m) => m.default || m);
+  usePageMeta({
+    title: "Documents",
+    description:
+      "Bylaws, articles of association, newsletters, annual reports, and meeting minutes for the South Boise Village Neighborhood Association."
+  });
 
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
@@ -25,9 +40,8 @@ export default function Documents() {
     const unique = Array.from(
       new Set(docs.map((d) => d.category).filter(Boolean))
     );
-    const ordered = SECTION_ORDER.filter((c) => unique.includes(c));
-    return ["All", ...ordered];
-  }, [docs]);
+    return ["All", ...orderCategories(unique)];
+  }, []);
 
   const grouped = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -47,14 +61,15 @@ export default function Documents() {
       groups[cat].push(d);
     }
 
-    return SECTION_ORDER.filter(
-      (cat) => groups[cat] && groups[cat].length > 0
-    ).map((cat) => ({ category: cat, docs: groups[cat] }));
-  }, [docs, query, category]);
+    return orderCategories(Object.keys(groups)).map((cat) => ({
+      category: cat,
+      docs: groups[cat]
+    }));
+  }, [query, category]);
 
   return (
     <div className="page-wrapper">
-      <h2 className="animate-fade-up">Documents</h2>
+      <h1 className="animate-fade-up">Documents</h1>
 
       <div className="filter-bar animate-fade-up delay-1">
         <input

@@ -3,15 +3,22 @@ import board from "../content/board/board.json";
 import { Polaroid, PolaroidGrid } from "../components/Polaroid";
 import ScrollReveal from "../components/ScrollReveal";
 import Modal from "../components/Modal";
+import usePageMeta from "../utils/usePageMeta";
 import "../styles/board.css";
 
 export default function Board() {
+  usePageMeta({
+    title: "Meet the Board",
+    description:
+      "Meet the volunteer board members of the South Boise Village Neighborhood Association."
+  });
+
   const members = Array.isArray(board) ? board : board.members || [];
   const [selected, setSelected] = useState(null);
 
   return (
     <div className="page-wrapper">
-      <h2 className="animate-fade-up">Meet the Board</h2>
+      <h1 className="animate-fade-up">Meet the Board</h1>
 
       <ScrollReveal>
         <PolaroidGrid>
@@ -28,7 +35,11 @@ export default function Board() {
       </ScrollReveal>
 
       {selected ? (
-        <Modal onClose={() => setSelected(null)} className="board-modal">
+        <Modal
+          onClose={() => setSelected(null)}
+          className="board-modal"
+          label={`${selected.name} — ${selected.role}`}
+        >
           <div className="board-modal__header">
             <img
               className="board-modal__photo"

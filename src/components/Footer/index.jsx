@@ -36,7 +36,9 @@ export default function Footer() {
 
           <div className="footer__badge">
             <img
-              src="/images/sbvna-badge.png"
+              src="/images/sbvna-badge.avif"
+              width="640"
+              height="427"
               alt="SBVNA badge"
               loading="lazy"
             />

@@ -1,10 +1,18 @@
 import { useState, useMemo } from "react";
 import eventsPage from "../content/events/events.json";
 import ScrollReveal from "../components/ScrollReveal";
+import usePageMeta from "../utils/usePageMeta";
 import "../styles/events.css";
 
 export default function Events() {
   const { title, blurb, events } = eventsPage;
+
+  usePageMeta({
+    title,
+    description:
+      "Upcoming and past events, meetings, and cleanups hosted by the South Boise Village Neighborhood Association."
+  });
+
   const [tab, setTab] = useState("upcoming");
 
   const { upcoming, past } = useMemo(() => {
@@ -39,7 +47,7 @@ export default function Events() {
 
   return (
     <div className="page-wrapper">
-      <h2 className="animate-fade-up">{title}</h2>
+      <h1 className="animate-fade-up">{title}</h1>
       {blurb ? <p className="animate-fade-up delay-1">{blurb}</p> : null}
 
       <div className="events-tabs">

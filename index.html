@@ -2,19 +2,62 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>South Boise Village Neighborhood Association</title>
+    <meta
+      name="description"
+      content="The South Boise Village Neighborhood Association serves the historic South Boise Village neighborhood in Boise, Idaho. Find upcoming events, board members, meeting minutes, bylaws, and neighborhood resources."
+    />
+    <link rel="canonical" href="https://sbvna.netlify.app/" />
+    <meta name="theme-color" content="#719843" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph / social link previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="South Boise Village Neighborhood Association" />
+    <meta property="og:title" content="South Boise Village Neighborhood Association" />
+    <meta
+      property="og:description"
+      content="Events, board members, documents, and resources for the historic South Boise Village neighborhood in Boise, Idaho."
+    />
+    <meta property="og:url" content="https://sbvna.netlify.app/" />
+    <meta property="og:image" content="https://sbvna.netlify.app/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="View of downtown Boise and the foothills from South Boise Village"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts: one combined request instead of two -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap"
-      rel="stylesheet"
-    />
-    <title>South Boise Village Neighborhood Association</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "South Boise Village Neighborhood Association",
+        "alternateName": "SBVNA",
+        "url": "https://sbvna.netlify.app/",
+        "logo": "https://sbvna.netlify.app/apple-touch-icon.png",
+        "email": "sbvnaboise@gmail.com",
+        "areaServed": {
+          "@type": "Place",
+          "name": "South Boise Village, Boise, Idaho"
+        }
+      }
+    </script>
+
     <script>
       (function () {
         var t = localStorage.getItem("theme");
@@ -28,7 +71,12 @@
   </head>
   <body>
     <div id="root"></div>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!--
+      Netlify Identity invite/recovery links land on the site root with a token
+      in the URL. The widget is only needed in that case (and on /admin/, which
+      loads its own copy), so load it on demand rather than on every page view.
+    -->
     <script>
       (function () {
         var hash = window.location.hash || "";
@@ -41,21 +89,19 @@
           search.includes("recovery_token=") ||
           search.includes("confirmation_token=");
 
-        if (hasIdentityToken) {
-          if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", function () {
-              window.netlifyIdentity.open();
-            });
-          } else {
-            document.addEventListener("DOMContentLoaded", function () {
-              window.netlifyIdentity.on("init", function () {
-                window.netlifyIdentity.open();
-              });
-            });
-          }
-        }
+        if (!hasIdentityToken) return;
+
+        var s = document.createElement("script");
+        s.src = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+        s.onload = function () {
+          window.netlifyIdentity.on("init", function () {
+            window.netlifyIdentity.open();
+          });
+        };
+        document.head.appendChild(s);
       })();
     </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

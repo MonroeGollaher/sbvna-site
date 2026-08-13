@@ -18,7 +18,7 @@ export default function AnnouncementBanner({ banner }) {
     // Small delay so it fades in after the page renders
     const timer = setTimeout(() => setVisible(true), 300);
     return () => clearTimeout(timer);
-  }, [banner]);
+  }, [banner, dismissKey]);
 
   if (!banner?.enabled || !visible) return null;
 

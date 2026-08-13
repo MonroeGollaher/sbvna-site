@@ -4,7 +4,7 @@
   padding: var(--space-10) var(--space-4);
   text-align: center;
 
-  & h2 {
+  & > h1 {
     margin-block-start: 0;
     margin-bottom: var(--space-2);
   }
@@ -34,4 +34,70 @@
   height: 1px;
   background: var(--color-border);
   margin: var(--space-10) 0;
+}
+
+/* Keep the skip-link target clear of the sticky header */
+#main {
+  scroll-margin-top: var(--space-16);
+  outline: none;
+}
+
+/* ===== Focus visibility =====
+   One global ring for keyboard users. :focus-visible means mouse clicks don't
+   show it, so this costs nothing visually for pointer users. */
+:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== Skip link ===== */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg-raised);
+  color: var(--color-text);
+  border: 2px solid var(--color-brand);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  transform: translateY(-200%);
+  transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  text-decoration: none;
+}
+
+/* ===== Reduced motion =====
+   Honour the OS setting: no entrance animations, no scroll reveal, no
+   smooth scrolling, no hover lifts. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card:hover,
+  .btn:hover,
+  .nav-link:hover {
+    transform: none;
+  }
 }

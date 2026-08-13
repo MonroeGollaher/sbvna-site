@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url("/images/hero-bg.jpg") center / cover no-repeat;
+  background: url("/images/hero-bg.avif") center / cover no-repeat;
   padding: var(--space-12) var(--space-4);
 }
 
