@@ -25,6 +25,7 @@ collections:
               - { name: "message", label: "Message", widget: "string", required: false }
               - { name: "linkText", label: "Link Text", widget: "string", required: false, hint: "e.g. View events" }
               - { name: "linkUrl", label: "Link URL", widget: "string", required: false, hint: "e.g. /events" }
+              - { name: "expires", label: "Show Until", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false, hint: "The banner hides itself after this date. Leave blank to show it until it's turned off." }
 
       - name: "about"
         label: "About"

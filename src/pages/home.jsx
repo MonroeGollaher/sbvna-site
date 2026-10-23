@@ -38,6 +38,16 @@ function getNextEventBanner(events) {
   };
 }
 
+// The manual banner can set a "Show until" date; hide it once that day has passed.
+function isBannerCurrent(banner) {
+  if (!banner?.expires) return true;
+  // A date-only value would parse as midnight UTC, so treat it as the end of that local day
+  const expires = banner.expires.includes("T")
+    ? new Date(banner.expires)
+    : new Date(`${banner.expires}T23:59:59`);
+  return expires >= new Date();
+}
+
 export default function Home() {
   usePageMeta({
     description:
@@ -49,7 +59,8 @@ export default function Home() {
 
   const banner = useMemo(() => {
     const eventBanner = getNextEventBanner(eventsPage.events || []);
-    return eventBanner || home.banner;
+    if (eventBanner) return eventBanner;
+    return isBannerCurrent(home.banner) ? home.banner : null;
   }, []);
 
   return (

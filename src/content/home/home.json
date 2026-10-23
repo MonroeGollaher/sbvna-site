@@ -6,6 +6,7 @@
     "enabled": true,
     "message": "Spring Cleanup is April 12th at Manitou Park — come join us!",
     "linkText": "View events",
-    "linkUrl": "/events"
+    "linkUrl": "/events",
+    "expires": "2026-04-12"
   }
 }
