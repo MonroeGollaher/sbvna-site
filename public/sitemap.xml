@@ -28,4 +28,8 @@
     <loc>https://sbvna.netlify.app/resources</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://sbvna.netlify.app/watch-list/</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -63,6 +63,11 @@ export default function Header() {
             </NavLink>
           ))}
 
+          {/* Static page in public/, so a plain link rather than a router NavLink */}
+          <a className="nav-link" href="/watch-list/">
+            Watch List
+          </a>
+
           <a className="nav-link nav-link--button" href="/admin/">
             Admin
           </a>
@@ -100,6 +105,10 @@ export default function Header() {
               {mobileLabel || label}
             </NavLink>
           ))}
+
+          <a className="nav-link" href="/watch-list/">
+            Watch List
+          </a>
 
           <a className="nav-link nav-link--button" href="/admin/">
             Admin
