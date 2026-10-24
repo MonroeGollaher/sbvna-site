@@ -2,6 +2,17 @@
   command = "npm run build"
   publish = "dist"
 
+# Keep existing watch-list bookmarks working.
+[[redirects]]
+  from = "/watch-list"
+  to = "/zoning-maps/"
+  status = 301
+
+[[redirects]]
+  from = "/watch-list/*"
+  to = "/zoning-maps/:splat"
+  status = 301
+
 # For React Router (SPA)
 [[redirects]]
   from = "/*"

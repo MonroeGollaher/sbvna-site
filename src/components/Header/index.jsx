@@ -64,8 +64,8 @@ export default function Header() {
           ))}
 
           {/* Static page in public/, so a plain link rather than a router NavLink */}
-          <a className="nav-link" href="/watch-list/">
-            Watch List
+          <a className="nav-link" href="/zoning-maps/">
+            Zoning Maps
           </a>
 
           <a className="nav-link nav-link--button" href="/admin/">
@@ -106,8 +106,8 @@ export default function Header() {
             </NavLink>
           ))}
 
-          <a className="nav-link" href="/watch-list/">
-            Watch List
+          <a className="nav-link" href="/zoning-maps/">
+            Zoning Maps
           </a>
 
           <a className="nav-link nav-link--button" href="/admin/">

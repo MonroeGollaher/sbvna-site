@@ -3,24 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>South Boise Village Watch List</title>
-<meta name="description" content="Which lots in South Boise Village could become apartments or other larger projects under current zoning, with development applications on file. From the South Boise Village Neighborhood Association.">
-<link rel="canonical" href="https://sbvna.netlify.app/watch-list/">
+<title>South Boise Village Zoning Map</title>
+<meta name="description" content="Explore South Boise Village zoning maps, parcels, and development applications. From the South Boise Village Neighborhood Association.">
+<link rel="canonical" href="https://sbvna.netlify.app/zoning-maps/">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Raleway:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<script>
-  // Match the theme chosen on the main site (same localStorage key as ThemeToggle).
-  (function () {
-    var t = null;
-    try { t = localStorage.getItem("theme"); } catch (e) {}
-    if (t !== "dark" && t !== "light")
-      t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    document.documentElement.dataset.theme = t;
-  })();
-</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: plat-map left (sticky on desktop), watch list right; reference tables below. Colors follow planning-map convention. */
 :root{
@@ -132,6 +122,11 @@ img{max-width:100%}[hidden]{display:none!important}
 tr.inactive td{color:var(--muted)}
 .subhead{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:18px 0 8px}
 .empty{padding:12px;color:var(--muted)}
+.disclaimer{margin-top:14px;max-width:72ch;padding:10px 14px;border:1px solid var(--warn);border-left:4px solid var(--warn);background:var(--surface);font-size:14px;line-height:1.5}
+.disclaimer b{color:var(--ink)}
+.sources{border-collapse:collapse;width:100%;font-size:14px}
+.sources td{vertical-align:top}
+.sources a{word-break:break-word}
 /* Map layers */
 :root{--c1:#3f78ad;--c2:#d4822f;--c3:#8a64b3;--c4:#4f9a5a;--c5:#c9573a;--c6:#c9cdc6;
   --s1:#e3efe9;--s2:#b2d3c6;--s3:#76ae9d;--s4:#3f8574;--s5:#1d5a4d}
@@ -145,6 +140,9 @@ tr.inactive td{color:var(--muted)}
 .layerpick select:focus-visible{outline:2px solid var(--sel);outline-offset:1px}
 .legend .ct{font:11.5px var(--mono);color:var(--muted);margin-left:4px;font-variant-numeric:tabular-nums}
 .layernote{margin:0;font-size:13px;color:var(--muted);max-width:70ch}
+.listhead{display:flex;flex-direction:column;gap:6px}
+.listhead h2{margin:0}
+.cluster h3{line-height:1.25}
 /* Map + list: two independently scrolling panes on wide screens */
 .mapcol{position:static;min-height:0}
 .mapbox{position:relative;padding:0;overflow:hidden}
@@ -183,6 +181,16 @@ tr.inactive td{color:var(--muted)}
   .mapbox{height:72vh;min-height:380px}
 }
 </style>
+<script>
+  // Match the theme chosen on the main site (same localStorage key as ThemeToggle).
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t !== "dark" && t !== "light")
+      t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
 <style>
 /* SBVNA site palette and fonts, layered over the original page. Zoning colors are left as-is. */
 :root[data-theme="light"]{
@@ -250,14 +258,14 @@ h1{letter-spacing:-.02em}
               <option value="vpa">Assessed value per acre</option>
               <option value="size">Lot size</option>
             </optgroup>
-            <optgroup label="This page">
-              <option value="watch">Watch list group</option>
+            <optgroup label="Development pressure">
+              <option value="watch">Why it may be targeted for apartments</option>
             </optgroup>
           </select>
         </label>
         <div class="filters" role="group" aria-label="Highlight on map">
           <button class="chip" id="f-all" data-f="all" aria-pressed="true">All lots</button>
-          <button class="chip" id="f-watch" data-f="watch" aria-pressed="false">Watch list only</button>
+          <button class="chip" id="f-watch" data-f="watch" aria-pressed="false">Possible targets only</button>
         </div>
       </div>
       <div class="mapbox"><svg id="map" role="img" aria-label="Parcel map of South Boise Village colored by zoning. Scroll or pinch to zoom, drag to move." preserveAspectRatio="xMidYMid meet"></svg>
@@ -275,14 +283,16 @@ h1{letter-spacing:-.02em}
 <div class="content" id="content">
   <header>
     <div class="eyebrow">Boise · Opportunity Zone tract 16001000901 · effective Jan 1, 2027</div>
-    <h1>South Boise Village Watch List</h1>
-    <p class="lede">Which lots in the neighborhood could become apartment buildings or other larger projects, based on Boise's zoning map, Ada County parcel records and the city's development tracker. The page loads the latest public data each time it opens. Click any lot on the map or in the list for details.</p>
+    <h1>South Boise Village Zoning Map</h1>
+    <div class="disclaimer" role="note"><b>Screening tool only.</b> This map combines public data with automated estimates and some hand-made corrections, and it can be wrong or out of date. Do not rely on it for decisions about a property. Verify anything important against the original data sources listed under <a href="#sources">Data sources</a> at the bottom of the page, or with City of Boise Planning &amp; Development Services and the Ada County Assessor.</div>
+    <p class="lede">A lot-by-lot map of South Boise Village showing zoning, what the zoning allows (height, density, units and lot splits), current land use, assessed values and open city applications. It was made in response to the neighborhood’s designation as a federal Opportunity Zone, which takes effect January 1, 2027 and gives investors a tax incentive to build here. One of the map layers shows lots with potential development pressure for apartments, and why. The page loads the latest public data from the City of Boise and Ada County each time it opens. Choose what to show with “Color lots by,” and click any lot on the map or in the list for details.</p>
     <div class="status loading" id="status"><span><span class="dot"></span><span id="statusText">Loading current city and county data…</span></span></div>
     <div class="facts" id="facts"></div>
   </header>
     <div class="list" id="list"></div>
   <section class="ref">
-    <h2>Applications on file</h2>
+    <h2>City applications on file</h2>
+    <p style="color:var(--muted);font-size:14px;max-width:70ch;margin:-4px 0 0" id="appsSummary"></p>
     <div class="subhead">Inside South Boise Village</div>
     <div class="tbl"><table>
       <thead><tr><th>#</th><th>Address</th><th>What</th><th>Status</th><th>Added</th><th>Decided by</th><th>Record</th></tr></thead>
@@ -316,10 +326,34 @@ h1{letter-spacing:-.02em}
     <h2>How this page works</h2>
     <div class="notes">
       <p><b>Live data.</b> Each time the page opens it asks the City of Boise and Ada County map services for the neighborhood boundary, parcels, zoning, infill areas, development applications and streets. If those services can't be reached, it shows the copy saved on October 21, 2026 and says so at the top.</p>
-      <p><b>How lots make the watch list.</b> Lots are sorted by rule: commercial or vacant lots in MX-2/MX-3; houses already zoned MX-2/MX-3; MX-1 lots; R-2/R-3 lots; R-1C homes on 0.4 acre or more; vacant R-1C lots big enough to build on; whole platted lots with no house, found from the county’s legal descriptions; and tax-exempt land of a quarter acre or more. A few lots carry notes written by hand in October 2026.</p>
+      <p><b>Why a lot may be targeted for apartments.</b> Each lot gets at most one reason, checked in this order: commercial or vacant lots in MX-2/MX-3; houses already zoned MX-2/MX-3; MX-1 lots; R-2/R-3 lots; R-1C homes on 0.4 acre or more; vacant R-1C lots big enough to build on; whole platted lots with no house, found from the county’s legal descriptions; and tax-exempt land of a quarter acre or more. A few lots carry notes written by hand in October 2026.</p>
       <p><b>"No homeowner's exemption."</b> Lots without the Idaho homeowner's exemption are usually rentals or investor-owned. It is a rough signal of which owners might sell, not a statement about anyone's plans. An assessed value of $0 usually means a tax-exempt owner such as the city, a church or Boise State.</p>
       <p><b>Limits.</b> Being on this list means the zoning allows more than exists today. It does not mean a sale or project is planned. Owner names are not shown. Confirm anything important with Boise Planning &amp; Development Services.</p>
     </div>
+  </section>
+
+  <section class="ref" id="sources">
+    <h2>Data sources</h2>
+    <p style="color:var(--muted);font-size:14px;max-width:70ch;margin:0 0 10px">The map service links open the raw data; the City of Boise publishes these layers through its <a href="https://opendata.cityofboise.org/" target="_blank" rel="noopener">open data portal</a>, where each has a description and download options.</p>
+    <div class="tbl"><table class="sources">
+      <thead><tr><th>Data</th><th>Source</th><th>How it is used here</th></tr></thead>
+      <tbody>
+        <tr><td>Neighborhood boundary</td><td><a href="https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/BoiseNeighborhoodAssociations/FeatureServer/0" target="_blank" rel="noopener">City of Boise, Neighborhood Associations</a></td><td>The South Boise Village outline (association ID 17).</td></tr>
+        <tr><td>Parcels, addresses, lot size, assessed value, homeowner’s exemption, property class, legal descriptions</td><td><a href="https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/Ada_County_Parcels/FeatureServer/142" target="_blank" rel="noopener">Ada County Assessor parcels, as published by the City of Boise</a></td><td>Lot outlines are tax parcels. Check an individual parcel on the Assessor’s site below.</td></tr>
+        <tr><td>Ada County Assessor property records</td><td><a href="https://adacounty.id.gov/assessor/" target="_blank" rel="noopener">Ada County Assessor</a></td><td>Owner, land and building values and other details for a single parcel.</td></tr>
+        <tr><td>Zoning</td><td><a href="https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/BoiseZoning/FeatureServer/191" target="_blank" rel="noopener">City of Boise, Boise Zoning</a></td><td>Zone for each lot, and MX-3/MX-4 zoning within a quarter mile.</td></tr>
+        <tr><td>Infill Incentive areas</td><td><a href="https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/PDS_Infill_Incentive/FeatureServer/0" target="_blank" rel="noopener">City of Boise, Infill Incentive Areas</a></td><td>Where the Neighborhood Infill incentive can apply.</td></tr>
+        <tr><td>City applications and demolition records</td><td><a href="https://experience.arcgis.com/experience/51faa5919ab6485db063450edf481ad4" target="_blank" rel="noopener">City of Boise Planning & Development Services, Development Tracker</a></td><td>Open applications, and demolitions used for the 3-year rule. Record numbers in the table link to each application in the city’s permit system.</td></tr>
+        <tr><td>City permit system</td><td><a href="https://permits.cityofboise.org/CitizenAccess/" target="_blank" rel="noopener">City of Boise Citizen Access</a></td><td>Plans, staff reports and comment deadlines for each application.</td></tr>
+        <tr><td>Streets</td><td><a href="https://services2.arcgis.com/dgGjZc6xAH5m5JyP/arcgis/rest/services/Road_Centerline/FeatureServer/19" target="_blank" rel="noopener">Ada County, Road Centerline Data</a></td><td>Street lines and names; collector and arterial streets; estimated lot frontage.</td></tr>
+        <tr><td>Zone height, density, lot size and setbacks</td><td><a href="https://codelibrary.amlegal.com/codes/boise_id/latest/boise/0-0-0-67254" target="_blank" rel="noopener">Boise City Code 11-04-03, Lot and Building Design and Dimensions</a></td><td>Values as of October 2026, including the neighbor step-down rules.</td></tr>
+        <tr><td>12-unit Neighborhood Infill incentive rules</td><td><a href="https://www.cityofboise.org/media/19415/neighborhoodscaleincentives-designguide-web-final.pdf" target="_blank" rel="noopener">City of Boise, Neighborhood-Scale Incentives Design Guide</a></td><td>Location, frontage, demolition and affordability tests.</td></tr>
+        <tr><td>Opportunity Zone designation</td><td><a href="https://commerce.idaho.gov/incentives/opportunity-zones/" target="_blank" rel="noopener">Idaho Department of Commerce, Opportunity Zones</a></td><td>Lists tract 16001000901 among Boise’s designated tracts, effective January 1, 2027.</td></tr>
+        <tr><td>Census tract boundary</td><td><a href="https://tigerweb.geo.census.gov/" target="_blank" rel="noopener">U.S. Census Bureau, TIGERweb</a></td><td>Used to confirm the neighborhood lies inside tract 16001000901.</td></tr>
+        <tr><td>Land-use checks of land-only parcels</td><td><a href="https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer" target="_blank" rel="noopener">Esri World Imagery (imagery dated May 6, 2026)</a></td><td>Each parcel the Assessor lists as land only was checked by eye against this imagery in October 2026.</td></tr>
+        <tr><td>Resident corrections</td><td>South Boise Village residents, October 2026</td><td>Corrections to land use and demolitions noted on individual lots. These are not from an official source.</td></tr>
+      </tbody>
+    </table></div>
   </section>
 </div>
 </div>
@@ -712,6 +746,8 @@ function el(tag,attrs,text){const e=document.createElement(tag);if(attrs)for(con
 function sel(tag,attrs){const e=document.createElementNS(NS,tag);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 
 let cur=null, shapes={}, rowsById={}, byId={}, allParcels=[];
+let APP_LEGEND='City application';
+const appKind=a=>a.multi?'City application for multiple units':'City application (small project, not apartments)';
 function render(model){
   const {parcels,apps,raw}=model;
   shapes={}; rowsById={}; byId={}; cur=null;
@@ -723,10 +759,11 @@ function render(model){
   const mxAc=parcels.filter(p=>/^MX-/.test(p.z)).reduce((s,p)=>s+(p.ac||0),0);
   const nearMulti=apps.filter(a=>!a.inside&&a.active&&a.multi);
   const newest=inside[0];
+  APP_LEGEND=insideMulti.length?'City application (see table; '+insideMulti.length+' for multiple units)':'City application (small projects, none for apartments)';
   const facts=[
     [parcels.length+' parcels','All inside tract 16001000901, a designated Opportunity Zone tract from Jan 1, 2027.'],
-    [insideMulti.length?insideMulti.length+' multifamily filing'+(insideMulti.length>1?'s':''):'No apartments filed', insideMulti.length?'Active applications inside the neighborhood that mention units, apartments or townhomes. See the table below.':'No active application inside the neighborhood mentions apartments, townhomes or units.'],
-    [inside.length+' active application'+(inside.length===1?'':'s'), newest?('Most recent: '+newest.addr+(newest.dt?' (added '+newest.dt+')':'')+'.'):'None currently on the city tracker.'],
+    [insideMulti.length?insideMulti.length+' apartment or multi-unit application'+(insideMulti.length>1?'s':'')+' found':'No apartment applications found', (insideMulti.length?'Found in':'Nothing for apartments, townhomes or multiple units turned up in')+' a search of the City of Boise Planning & Development Services development tracker for this neighborhood'+(insideMulti.length?'. See the table below.':'.')],
+    [(inside.length-insideMulti.length)+' small-project application'+((inside.length-insideMulti.length)===1?'':'s'), 'Lot splits, small-lot subdivisions and ADUs, none for apartments.'+(newest?(' Most recent: '+newest.addr+(newest.dt?' (added '+newest.dt+')':'')+'.'):'')],
     ['~'+Math.round(mxAc)+' acres mixed-use','Zoned MX-1, MX-2 or MX-3 with no density cap.']
   ];
   if(nearMulti.length) facts[3]=[nearMulti.length+' nearby multifamily', nearMulti.slice(0,2).map(a=>a.addr).join('; ')+(nearMulti.length>2?' and others':'')+', just outside the boundary.'];
@@ -777,47 +814,16 @@ function render(model){
     const g=sel('g',{class:'app','data-x':x,'data-y':y});
     g.appendChild(sel('circle',{cx:0,cy:0,r:13}));
     const tx=sel('text',{x:0,y:0}); tx.textContent=a.n; g.appendChild(tx);
-    const tt=sel('title'); tt.textContent=a.addr+' — '+(a.desc||a.id); g.appendChild(tt);
+    const tt=sel('title'); tt.textContent=a.addr+' — '+appKind(a)+': '+(a.desc||a.id); g.appendChild(tt);
     svg.appendChild(g);
   });
   MAP.apply();
   applyLayer();
 
-  // ---- watch list
-  const list=document.getElementById('list'); list.innerHTML='';
-  const tagCls=l=>/Highest/.test(l)?'hi':(/Moderate/.test(l)?'mid':'low');
-  CLUSTERS.forEach(c=>{
-    const items=parcels.filter(p=>p.w===c.key);
-    if(!items.length){
-      if(c.key!=='vacantint') return;
-      const s=el('section',{class:'cluster'});
-      const h=el('div',{class:'chead'}); h.append(el('h3',null,c.name), el('span',{class:'tag low'},'None right now'));
-      s.append(h, el('p',{class:'cwhy'},c.why+' No lot in the neighborhood meets this right now.'));
-      list.appendChild(s); return;
-    }
-    items.sort((a,b)=>(b.apps.length-a.apps.length)||((NOTES[b.id]?1:0)-(NOTES[a.id]?1:0))||((b.ac||0)-(a.ac||0)));
-    const zones=[...new Set(items.map(p=>p.z))].sort().join(' / ');
-    const acres=items.reduce((s,p)=>s+(p.ac||0),0);
-    const rentals=items.filter(p=>p.use==='home'&&!p.ho).length, homes=items.filter(p=>p.use==='home').length;
-    const s=el('section',{class:'cluster'});
-    const h=el('div',{class:'chead'}); h.append(el('h3',null,c.name), el('span',{class:'tag '+tagCls(c.likelihood)},c.likelihood));
-    let meta=zones+' · '+items.length+' parcel'+(items.length>1?'s':'')+' · '+acres.toFixed(1)+' acres';
-    if(homes>=5) meta+=' · '+rentals+' of '+homes+' homes without a homeowner’s exemption';
-    s.append(h, el('div',{class:'cmeta'},meta), el('p',{class:'cwhy'},c.why));
-    const rows=el('div',{class:'rows'});
-    const LIMIT=8;
-    items.forEach((p,i)=>{
-      const r=el('button',{class:'row',type:'button'}); if(i>=LIMIT) r.hidden=true;
-      r.append(el('span',{class:'ra'},p.addr||'(no street number)'), el('span',{class:'rv'},fmtAc(p.ac)+' · '+fmt$(p.val)));
-      const note=noteFor(p,true); if(note) r.append(el('span',{class:'rn'},note));
-      r.addEventListener('click',()=>select(p.id,false));
-      rows.appendChild(r); (rowsById[p.id]=rowsById[p.id]||[]).push(r);
-    });
-    if(items.length>LIMIT){const m=el('button',{class:'more',type:'button'},'Show all '+items.length);m.addEventListener('click',()=>{rows.querySelectorAll('.row[hidden]').forEach(x=>x.hidden=false);m.remove();});rows.appendChild(m);}
-    s.appendChild(rows); list.appendChild(s);
-  });
+  renderList();
 
   // ---- application tables
+  document.getElementById('appsSummary').textContent=insideMulti.length?('Inside the neighborhood, '+insideMulti.length+' open application'+(insideMulti.length>1?'s are':' is')+' for multiple units; the rest are small projects.'):'These are small projects: lot splits, small-lot subdivisions, ADUs and a variance. None inside the neighborhood is for apartments.';
   const tin=document.getElementById('appsIn'), tout=document.getElementById('appsOut'); tin.innerHTML=''; tout.innerHTML='';
   const link=a=>{const td=el('td',{class:'num'}); if(a.url){const l=el('a',{href:a.url,target:'_blank',rel:'noopener'},a.id);td.appendChild(l);} else td.textContent=a.id; return td;};
   const addCell=(tr,text,cls)=>{const td=el('td',cls?{class:cls}:null,text);tr.appendChild(td);return td;};
@@ -841,15 +847,75 @@ function render(model){
   document.getElementById('detail').innerHTML='<span style="color:var(--muted)">Select a lot to see its zoning, size and assessed value.</span>';
 }
 
+const LIST_LIMIT=8;
+function listSortKey(p){ return [-(p.apps?p.apps.length:0), NOTES[p.id]?0:1, -(p.ac||0)]; }
+function cmpKey(a,b){ const x=listSortKey(a), y=listSortKey(b); for(let i=0;i<x.length;i++){ if(x[i]!==y[i]) return x[i]<y[i]?-1:1; } return 0; }
+function renderList(){
+  const list=document.getElementById('list'); if(!list) return;
+  const L=LAYERS[currentLayer]; const ps=allParcels; if(!ps.length) return;
+  const items=L.build(ps);
+  const groups=items.map(()=>[]);
+  ps.forEach(p=>{ const i=items.findIndex(it=>it[2](p)); if(i>=0) groups[i].push(p); });
+  list.innerHTML=''; rowsById={};
+  const sel=document.getElementById('layerSel');
+  const head=el('div',{class:'listhead'});
+  head.append(el('h2',null,currentLayer==='watch'?('All '+ps.length+' parcels, by reason they may be targeted for apartments'):('All '+ps.length+' parcels by '+sel.options[sel.selectedIndex].text.toLowerCase())), el('p',{class:'cmeta'},'Grouped the same way as the map. Change “Color lots by” to regroup.'));
+  list.appendChild(head);
+  const tagCls=l=>/Highest/.test(l)?'hi':(/Moderate/.test(l)?'mid':'low');
+  const isWatch=currentLayer==='watch';
+  items.forEach((it,i)=>{
+    const g=groups[i];
+    const cl=isWatch?CLUSTERS.find(c=>c.name===it[0]):null;
+    if(!g.length && !(cl&&cl.key==='vacantint')) return;
+    const s=el('section',{class:'cluster'});
+    const h=el('div',{class:'chead'});
+    const title=el('h3'); title.style.borderLeft='12px solid '+it[1]; title.style.paddingLeft='8px'; title.append(el('span',null,it[0]));
+    h.appendChild(title);
+    if(cl) h.appendChild(el('span',{class:'tag '+(g.length?tagCls(cl.likelihood):'low')},g.length?cl.likelihood:'None right now'));
+    s.appendChild(h);
+    if(g.length){
+      const zones=[...new Set(g.map(p=>p.z))].sort().join(' / ');
+      const acres=g.reduce((t,p)=>t+(p.ac||0),0);
+      const homes=g.filter(p=>p.use==='home'), rentals=homes.filter(p=>!p.ho).length;
+      let meta=g.length+' parcel'+(g.length>1?'s':'')+' · '+acres.toFixed(1)+' acres · '+zones;
+      if(homes.length>=5) meta+=' · '+rentals+' of '+homes.length+' homes without a homeowner’s exemption';
+      s.appendChild(el('div',{class:'cmeta'},meta));
+    }
+    if(cl) s.appendChild(el('p',{class:'cwhy'},cl.why+(g.length?'':' No lot in the neighborhood meets this right now.')));
+    if(g.length){
+      g.sort(cmpKey);
+      const rows=el('div',{class:'rows'});
+      g.forEach((p,j)=>{
+        const r=el('button',{class:'row',type:'button'}); if(j>=LIST_LIMIT) r.hidden=true;
+        r.append(el('span',{class:'ra'},p.addr||'(no street number)'), el('span',{class:'rv'},p.z+' · '+fmtAc(p.ac)+' · '+fmt$(p.val)));
+        const note=[p.w?'':'Likely low development pressure for apartments.',noteFor(p,true)].filter(Boolean).join(' '); if(note) r.append(el('span',{class:'rn'},note));
+        r.addEventListener('click',()=>select(p.id,false));
+        if(p.id===cur) r.classList.add('sel');
+        rows.appendChild(r); (rowsById[p.id]=rowsById[p.id]||[]).push(r);
+      });
+      if(g.length>LIST_LIMIT){ const m=el('button',{class:'more',type:'button'},'Show all '+g.length); m.addEventListener('click',()=>{ rows.querySelectorAll('.row[hidden]').forEach(x=>x.hidden=false); m.remove(); }); rows.appendChild(m); }
+      s.appendChild(rows);
+    }
+    list.appendChild(s);
+  });
+}
+// Statement for lots with no particular reason to expect apartments.
+function lowPressureText(p){
+  let why;
+  if(notSite(p)) why='It is part of a neighboring home’s lot rather than a building site of its own.';
+  else if(p.use==='public') why='It is park, school, church or other tax-exempt land in active use.';
+  else if(p.use==='built'||p.use==='homesite') why='It already has a home on it.';
+  else why='Its zoning allows little more than what is there now, apart from an ADU, a duplex or a lot split.';
+  return 'Likely low development pressure for apartments. '+why;
+}
 function noteFor(p,short){
   const parts=[];
-  if(p.apps&&p.apps.length) parts.push('Active application: '+p.apps.map(a=>(a.desc||a.id)+' ('+a.st+')').join('; ')+'.');
+  if(p.apps&&p.apps.length) parts.push(p.apps.map(a=>appKind(a)+': '+(a.desc||a.id)+' ('+a.st+')').join('; ')+'.');
   if(NOTES[p.id]) parts.push(NOTES[p.id]);
   if(!short){
     if(p.platted) parts.push('Legal description: '+String(p.legal).split('/').slice(0,2).join(',').trim()+'. A whole lot from the original plat, so it may be possible to sell or build on it separately.');
     if(LANDCHECK[p.id]) parts.push(LANDCHECK[p.id][1]+' (Checked against aerial imagery from '+LANDCHECK_DATE+'.)');
     else if(p.use==='unchecked') parts.push('The assessor lists this as land only. That often means a new house not yet assessed, a yard parcel or a sliver, so check before treating it as vacant.');
-    if(p.g==='r1c' && p.inf) parts.push('Inside the city’s Infill Incentive area.');
   }
   return parts.join(' ');
 }
@@ -859,7 +925,7 @@ function select(id,fromMap){
   cur=id; const p=byId[id]; if(!p) return;
   const sh=shapes[id]; sh.classList.add('sel'); sh.parentNode.appendChild(sh);
   if(!fromMap && p.pc) MAP.reveal(p.pc[0],p.pc[1]);
-  (rowsById[id]||[]).forEach(r=>{r.classList.add('sel'); r.hidden=false; if(fromMap) r.scrollIntoView({block:'nearest',behavior:'smooth'});});
+  (rowsById[id]||[]).forEach(r=>r.classList.add('sel'));
   const det=document.getElementById('detail'); det.innerHTML='';
   det.appendChild(el('div',{class:'addr'},p.addr||'(no street number)'));
   const kv=el('div',{class:'kv'});
@@ -883,8 +949,8 @@ function select(id,fromMap){
     det.appendChild(ak);
   }
   const cl=CLUSTERS.find(c=>c.key===p.w);
-  const n=noteFor(p,false) || (cl?'':'Not on the watch list. Current zoning allows little more than what is there now, apart from ADUs, duplexes or a lot split.');
-  det.appendChild(el('div',{class:'note',style:'margin-top:6px'},(cl?'Watch list: '+cl.name+'. ':'')+n));
+  const n=noteFor(p,false);
+  det.appendChild(el('div',{class:'note',style:'margin-top:6px'},(cl?'Why it may be targeted for apartments: '+cl.name+'. ':lowPressureText(p)+' ')+n));
 }
 
 function placeLabels(chains,inside2){
@@ -1088,8 +1154,8 @@ const LAYERS={
     build:()=>[['15 / 5 / 15 ft (R-1C)','var(--c1)',p=>zbase(p.z)==='R-1C'],['10 / 5 / 15 ft (R-2, R-3)','var(--c4)',p=>['R-2','R-3'].includes(zbase(p.z))],['0–20 / 0 / 10 ft (mixed use)','var(--c5)',p=>/^MX-/.test(zbase(p.z))],['20 / 20 ft (A-1)','var(--c3)',p=>zbase(p.z)==='A-1'],['Unknown',NODATA,()=>true]]},
   trans:{note:'Lots outside R-1C that share a lot line with an R-1C lot. New apartments, mixed-use or nonresidential buildings here must step down: 35 ft max at the setback, then back 20 ft, then another 10 ft; parking set back at least 10 ft; lights no taller than 20 ft within 50 ft of the line. Lots separated from houses by a street, like most of the Broadway frontage across S Denver Ave, are not marked; ask the city whether a project there must still step down.',
     build:()=>[['Step-down rules apply (borders R-1C)','var(--c5)',p=>p.trans],['Larger zone, no R-1C neighbor','var(--c2)',p=>p.g!=='r1c'&&!p.trans],['R-1C lot',NODATA,()=>true]]},
-  watch:{note:'How each lot is grouped in the watch list on this page.',
-    build:()=>CLUSTERS.map(c=>[c.name,GROUP_COLORS[c.key],p=>p.w===c.key]).concat([['Not on the watch list',NODATA,()=>true]])}
+  watch:{note:'The main reason, if any, that a developer might target each lot for apartments or other added housing, based on its zoning, size, current use and ownership type. A reason is not a prediction that a lot will be developed.',
+    build:()=>CLUSTERS.map(c=>[c.name,GROUP_COLORS[c.key],p=>p.w===c.key]).concat([['Likely low development pressure for apartments',NODATA,()=>true]])}
 };
 let currentLayer='zone';
 try{ const s=localStorage.getItem('sbv-layer'); if(s&&LAYERS[s]) currentLayer=s; }catch(_){}
@@ -1104,13 +1170,13 @@ function applyLayer(){
   });
   const lg=document.getElementById('legend'); lg.innerHTML='';
   items.forEach((it,i)=>{ if(!counts[i]) return; const s=el('span'); s.append(swatch(it[1]),document.createTextNode(it[0]),el('span',{class:'ct'},String(counts[i]))); lg.appendChild(s); });
-  const a=el('span'); a.append(swatch(null,'background:var(--surface);border-radius:50%;border:2px solid var(--ink)'),document.createTextNode('Active application')); lg.appendChild(a);
+  const a=el('span'); a.append(swatch(null,'background:var(--surface);border-radius:50%;border:2px solid var(--ink)'),document.createTextNode(APP_LEGEND)); lg.appendChild(a);
   const st=el('span'); st.append(swatch(null,'background:none;border:0;border-top:3px solid var(--street);height:0;width:16px;vertical-align:3px'),document.createTextNode('Street')); lg.appendChild(st);
   document.getElementById('layernote').textContent=L.note;
   const sel=document.getElementById('layerSel'); if(sel.value!==currentLayer) sel.value=currentLayer;
   document.getElementById('map').setAttribute('aria-label','Parcel map of South Boise Village colored by '+sel.options[sel.selectedIndex].text.toLowerCase()+'. Scroll or pinch to zoom, drag to move.');
 }
-document.getElementById('layerSel').addEventListener('change',e=>{ currentLayer=e.target.value; try{localStorage.setItem('sbv-layer',currentLayer);}catch(_){} applyLayer(); });
+document.getElementById('layerSel').addEventListener('change',e=>{ currentLayer=e.target.value; try{localStorage.setItem('sbv-layer',currentLayer);}catch(_){} applyLayer(); renderList(); });
 
 // ---------- controls & boot ----------
 document.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>{
