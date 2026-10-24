@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import EmbeddedVideo from "../components/EmbeddedVideo";
+import { Link } from "react-router-dom";
 import AnnouncementBanner from "../components/AnnouncementBanner";
 import useScrollReveal from "../utils/useScrollReveal";
 import usePageMeta from "../utils/usePageMeta";
@@ -55,7 +55,10 @@ export default function Home() {
   });
 
   const posterRef = useScrollReveal();
-  // const videoRef = useScrollReveal();
+  const nextEvent = (eventsPage.events || [])
+    .filter((event) => new Date(event.startTime) > new Date())
+    .sort((a, b) => new Date(a.startTime) - new Date(b.startTime))[0];
+  const nextDate = nextEvent ? new Date(nextEvent.startTime) : null;
 
   const banner = useMemo(() => {
     const eventBanner = getNextEventBanner(eventsPage.events || []);
@@ -68,40 +71,89 @@ export default function Home() {
       <AnnouncementBanner banner={banner} />
       <section className="hero">
         <div className="hero__content">
-          <h1 className="hero__title">{home.title}</h1>
-          <p className="hero__subtitle">{home.intro}</p>
+          <p className="home-eyebrow hero__eyebrow">
+            South Boise Village · Boise, Idaho
+          </p>
+          <h1 className="hero__title">
+            A little neighborhood.
+            <br />A lot of history.
+          </h1>
+          <p className="hero__subtitle">Welcome to South Boise Village.</p>
           <p className="hero__blurb">{home.blurb}</p>
-          <a href="/about" className="hero__btn">
-            Learn more
-          </a>
+          <div className="hero__actions">
+            <Link to="/about" className="hero__btn">
+              Explore the neighborhood <span aria-hidden="true">↗</span>
+            </Link>
+            <Link to="/board" className="hero__secondary">
+              Meet your neighbors <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
+      </section>
+
+      <section className="home-event" aria-labelledby="home-event-title">
+        <div className="home-event__date" aria-hidden="true">
+          {nextDate ? (
+            <>
+              <span>
+                {nextDate.toLocaleDateString("en-US", { month: "short" })}
+              </span>
+              <strong>{nextDate.getDate()}</strong>
+            </>
+          ) : (
+            <>
+              <span>Come</span>
+              <strong>say hi.</strong>
+            </>
+          )}
+        </div>
+        <div className="home-event__text">
+          <p className="home-eyebrow">Around the neighborhood</p>
+          <h2 id="home-event-title">
+            {nextEvent ? nextEvent.title : "More gatherings ahead."}
+          </h2>
+          <p>
+            {nextEvent
+              ? `${nextDate.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit" })}${nextEvent.location ? ` · ${nextEvent.location}` : ""}`
+              : "Park gatherings, neighborhood cleanups, and a chance to catch up. Check back for our next event."}
+          </p>
+        </div>
+        <Link className="home-text-link" to="/events">
+          {nextEvent ? "Event details" : "Explore our events"}{" "}
+          <span aria-hidden="true">→</span>
+        </Link>
       </section>
 
       <section className="poster reveal" ref={posterRef}>
         <div className="poster__inner">
-          <img
-            className="poster__image"
-            src="/images/sbv-poster.webp"
-            alt="Historic South Boise Village Neighborhood poster — available for a minimum donation of $10"
-          />
+          <div className="poster__frame">
+            <img
+              className="poster__image"
+              src="/images/sbv-poster.webp"
+              alt="Historic South Boise Village Neighborhood poster — available for a minimum donation of $10"
+            />
+          </div>
           <div className="poster__text">
-            <h3>Neighborhood Poster</h3>
+            <p className="home-eyebrow">A piece of the Village</p>
+            <h2>
+              Local pride.
+              <br />
+              Ready to frame.
+            </h2>
             <p>
               Get a beautiful 11" x 17" Historic South Boise Village poster for
               your home. Available for a minimum donation of $10 (cash or check
               only) with free delivery to your door.
             </p>
-            <p>
-              Contact{" "}
-              <a href="mailto:sbvnaboise@gmail.com">sbvnaboise@gmail.com</a> to
-              order yours.
+            <p className="poster__details">
+              11″ × 17″ <span aria-hidden="true">·</span> $10 minimum donation
             </p>
+            <a className="home-text-link" href="mailto:sbvnaboise@gmail.com">
+              Order your poster <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </section>
-      {/* <section className="reveal" ref={videoRef}>
-        <EmbeddedVideo src="https://vimeo.com/561455388?fl=pl&fe=vl" />
-      </section> */}
     </>
   );
 }
