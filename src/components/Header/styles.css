@@ -1,5 +1,9 @@
 /* ===== Base header ===== */
 .header {
+  font: var(--font-size-base)/var(--line-height-normal) var(--font-family-body);
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -9,8 +13,15 @@
   border-bottom: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
 }
 
+.header *,
+.header *::before,
+.header *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .header__inner {
-  max-width: var(--max-width);
+  max-width: 1440px;
   margin: 0 auto;
   padding: var(--space-3) var(--space-4);
   display: flex;
@@ -27,6 +38,8 @@
   flex-direction: column;
   line-height: 1.1;
   gap: 2px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .brand:hover {
   text-decoration: none;
@@ -137,7 +150,9 @@
 }
 
 .mobile-menu--open {
-  max-height: 420px;
+  max-height: calc(100dvh - 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .nav--mobile {
@@ -177,7 +192,7 @@
 }
 
 /* ===== Breakpoint: show desktop nav ===== */
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .nav--desktop {
     display: flex;
   }
@@ -193,4 +208,37 @@
   .overlay {
     display: none;
   }
+}
+
+/* Planning pages share a compact desktop dropdown and a mobile group. */
+.planning-dropdown { position: relative; }
+.planning-dropdown summary { display: flex; align-items: center; gap: 8px; list-style: none; cursor: pointer; }
+.planning-dropdown summary::-webkit-details-marker { display: none; }
+.planning-dropdown[open] summary {
+  background: var(--color-bg-raised);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  box-shadow: inset 1px 0 var(--color-border), inset -1px 0 var(--color-border), inset 0 1px var(--color-border);
+}
+.planning-dropdown summary:hover { transform: none; }
+.planning-dropdown__links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 100%;
+  width: max-content;
+  display: grid;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid var(--color-border);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background: var(--color-bg-raised);
+  box-shadow: var(--shadow-lg);
+}
+.planning-mobile { display: grid; gap: var(--space-2); border-top: 1px solid var(--color-border); padding-top: var(--space-3); }
+.planning-mobile p { margin: 0; padding: 0 var(--space-3); font: var(--font-weight-semibold) var(--font-size-xs) var(--font-family-heading); color: var(--color-text-secondary); }
+.planning-mobile .nav-link { padding-left: var(--space-6); }
+@media (max-width: 380px) {
+  .brand__title { font-size: 0.9rem; letter-spacing: 0; }
+  .header__inner { gap: var(--space-2); }
 }

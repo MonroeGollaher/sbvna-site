@@ -1,0 +1,14 @@
+/* Keep the shared navigation independent of the standalone pages' styles. */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
+}
+#site-header .header { position: relative; }
+#site-header a { text-decoration: none; }
+#site-header .brand { color: var(--color-text); }
+#site-header .nav-link { color: var(--color-text); }
+#site-header .nav-link--active { color: var(--color-brand-dark); }
+#site-header .planning-mobile p { margin: 0; }
+#site-header :focus-visible { outline: 3px solid var(--color-brand); outline-offset: 2px; }

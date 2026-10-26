@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
 import "./styles.css";
@@ -17,9 +17,20 @@ function linkClass({ isActive }) {
   return isActive ? "nav-link nav-link--active" : "nav-link";
 }
 
-export default function Header() {
+export default function Header({ fullPageNavigation = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const planningRef = useRef(null);
+
+  useEffect(() => {
+    function closePlanning(event) {
+      if (!planningRef.current?.contains(event.target)) {
+        planningRef.current?.removeAttribute("open");
+      }
+    }
+    document.addEventListener("pointerdown", closePlanning);
+    return () => document.removeEventListener("pointerdown", closePlanning);
+  }, []);
 
   // Close the mobile menu on route change by adjusting state during render,
   // rather than in an effect (avoids a cascading second render).
@@ -50,7 +61,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__inner">
-        <NavLink to="/" className="brand" aria-label="South Boise Village Home">
+        <NavLink reloadDocument={fullPageNavigation} to="/" className="brand" aria-label="South Boise Village Home">
           <span className="brand__title">South Boise Village</span>
           <span className="brand__subtitle">Neighborhood Association</span>
         </NavLink>
@@ -58,15 +69,33 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="nav nav--desktop" aria-label="Main navigation">
           {NAV_LINKS.map(({ to, label }) => (
-            <NavLink key={to} to={to} className={linkClass} end={to === "/"}>
+            <NavLink reloadDocument={fullPageNavigation} key={to} to={to} className={linkClass} end={to === "/"}>
               {label}
             </NavLink>
           ))}
 
           {/* Static page in public/, so a plain link rather than a router NavLink */}
-          <a className="nav-link" href="/zoning-maps/">
-            Zoning Maps
-          </a>
+          <details
+            className="planning-dropdown"
+            ref={planningRef}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                event.currentTarget.removeAttribute("open");
+                event.currentTarget.querySelector("summary").focus();
+              }
+            }}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                event.currentTarget.removeAttribute("open");
+              }
+            }}
+          >
+            <summary className="nav-link">Planning &amp; Development <span aria-hidden="true">⌄</span></summary>
+            <div className="planning-dropdown__links">
+              <a className="nav-link" href="/zoning-maps/">Zoning Maps</a>
+              <a className="nav-link" href="/ongoing-development/">Ongoing Development</a>
+            </div>
+          </details>
 
           <a className="nav-link nav-link--button" href="/admin/">
             Admin
@@ -101,14 +130,16 @@ export default function Header() {
       >
         <nav className="nav nav--mobile" aria-label="Mobile navigation">
           {NAV_LINKS.map(({ to, label, mobileLabel }) => (
-            <NavLink key={to} to={to} className={linkClass} end={to === "/"}>
+            <NavLink reloadDocument={fullPageNavigation} key={to} to={to} className={linkClass} end={to === "/"}>
               {mobileLabel || label}
             </NavLink>
           ))}
 
-          <a className="nav-link" href="/zoning-maps/">
-            Zoning Maps
-          </a>
+          <div className="planning-mobile" role="group" aria-labelledby="planning-mobile-label">
+            <p id="planning-mobile-label">Planning &amp; Development</p>
+            <a className="nav-link" href="/zoning-maps/">Zoning Maps</a>
+            <a className="nav-link" href="/ongoing-development/">Ongoing Development</a>
+          </div>
 
           <a className="nav-link nav-link--button" href="/admin/">
             Admin

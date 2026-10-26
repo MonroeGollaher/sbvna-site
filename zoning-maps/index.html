@@ -208,33 +208,16 @@ tr.inactive td{color:var(--muted)}
 h1,h2,h3,.fact b,.detail .addr{font-stretch:normal}
 h1{letter-spacing:-.02em}
 
-/* Slim site bar; the app fills the rest of the screen below it */
-.sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:10px max(16px,env(safe-area-inset-left,0px));padding-top:calc(10px + env(safe-area-inset-top,0px));
-  background:var(--surface);border-bottom:1px solid var(--line)}
-.sitebar .brand{display:inline-flex;flex-direction:column;line-height:1.1;gap:2px;color:var(--ink);text-decoration:none}
-.sitebar .brand b{font:700 15px var(--display);letter-spacing:.08em;text-transform:uppercase}
-.sitebar .brand span{font:12px var(--body);color:var(--muted)}
-.sitebar .actions{display:flex;align-items:center;gap:8px}
-.sitebar .back{font:600 14px var(--display);color:var(--accent);text-decoration:none;white-space:nowrap}
-.sitebar .back:hover{text-decoration:underline}
-.sitebar .theme{width:36px;height:36px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-size:16px;cursor:pointer}
-.sitebar a:focus-visible,.sitebar button:focus-visible{outline:2px solid var(--sel);outline-offset:2px}
 @media (min-width:861px){
   body{display:flex;flex-direction:column}
   .wrap{flex:1 1 auto;min-height:0;height:auto;width:100%}
 }
-@media (max-width:420px){.sitebar .brand span{display:none}}
 </style>
 </head>
 <body>
-<nav class="sitebar" aria-label="Site">
-  <a class="brand" href="/"><b>South Boise Village</b><span>Neighborhood Association</span></a>
-  <div class="actions">
-    <a class="back" href="/">&larr; Back to site</a>
-    <button type="button" class="theme" id="themeBtn"></button>
-  </div>
-</nav>
+<div id="site-header"></div>
+<script type="module" src="/src/static-header.jsx"></script>
+
 <div class="wrap">
 <div class="app">
     <div class="mapcol">
@@ -260,6 +243,7 @@ h1{letter-spacing:-.02em}
             </optgroup>
             <optgroup label="Development pressure">
               <option value="watch">Why it may be targeted for apartments</option>
+              <option value="pressure">Development pressure level</option>
             </optgroup>
           </select>
         </label>
@@ -327,6 +311,7 @@ h1{letter-spacing:-.02em}
     <div class="notes">
       <p><b>Live data.</b> Each time the page opens it asks the City of Boise and Ada County map services for the neighborhood boundary, parcels, zoning, infill areas, development applications and streets. If those services can't be reached, it shows the copy saved on October 21, 2026 and says so at the top.</p>
       <p><b>Why a lot may be targeted for apartments.</b> Each lot gets at most one reason, checked in this order: commercial or vacant lots in MX-2/MX-3; houses already zoned MX-2/MX-3; MX-1 lots; R-2/R-3 lots; R-1C homes on 0.4 acre or more; vacant R-1C lots big enough to build on; whole platted lots with no house, found from the county’s legal descriptions; and tax-exempt land of a quarter acre or more. A few lots carry notes written by hand in October 2026.</p>
+      <p><b>Development pressure level.</b> A lot with a reason is rated higher when it is not anyone’s primary residence (no homeowner’s exemption, or commercial, vacant or parking land), and highest when it is one of 3 or more such lots side by side in R-2, R-3 or mixed-use zoning. Owner-occupied lots, yard lots and tax-exempt land with a reason are rated moderate. This uses the exemption and lot lines only; owner names are never used.</p>
       <p><b>"No homeowner's exemption."</b> Lots without the Idaho homeowner's exemption are usually rentals or investor-owned. It is a rough signal of which owners might sell, not a statement about anyone's plans. An assessed value of $0 usually means a tax-exempt owner such as the city, a church or Boise State.</p>
       <p><b>Limits.</b> Being on this list means the zoning allows more than exists today. It does not mean a sale or project is planned. Owner names are not shown. Confirm anything important with Boise Planning &amp; Development Services.</p>
     </div>
@@ -470,9 +455,9 @@ const CLUSTERS=[
    why:'MX-1 zoning: 45 ft, no density cap. Smaller sites, so 3–4 story buildings or townhomes are more likely than large complexes.'},
   {key:'rmf',name:'Multifamily-zoned lots',likelihood:'Moderate, over time',
    why:'R-2 and R-3 allow 4 stories with no density cap. Near Boise State, developers have assembled several adjacent small lots like these and replaced them with one apartment building.'},
-  {key:'interior',name:'Large interior lots',likelihood:'Small-scale infill',
+  {key:'interior',name:'Large lots',likelihood:'Small-scale infill',
    why:'R-1C homes on 0.4 acre or more. A lot this size can be split, or, inside the city’s Infill Incentive area, hold up to 12 units, often approved by staff. So far owners here have mostly split lots for houses.'},
-  {key:'vacantint',name:'Vacant interior lots',likelihood:'Small-scale infill',
+  {key:'vacantint',name:'Vacant lots',likelihood:'Small-scale infill',
    why:'R-1C lots with no building (open or recently cleared land, parking, or land-only parcels not yet checked) that are big enough to build on by themselves, 3,500 sq ft or more. Whole platted lots used as yards are listed separately below.'},
   {key:'platted',name:'Separate platted lots used as yards',likelihood:'Possible small infill',
    why:'Each of these is one or more whole lots from an original subdivision plat, with no house on it, held as a neighbor’s yard. Because they are separate legal lots, an owner may be able to sell one or build on it, sometimes even below today’s minimum lot size under the city’s Residential Small Lot rules (11-04-03.4). The city decides case by case.'},
@@ -688,6 +673,44 @@ function subdivOf(p){
   const byFront=p.front?Math.max(1,Math.floor(p.front/w)):1;
   return {area:byArea, front:byFront, lots:Math.min(byArea,byFront), extra:Math.min(byArea,byFront)-1, back:byArea-Math.min(byArea,byFront)};
 }
+// Not anyone's primary residence: a home without the homeowner's exemption, or commercial, vacant or parking land.
+const notPrimary=p=>(p.use==='home'&&!p.ho)||['commercial','vacant','parking','unchecked'].includes(p.use);
+// Groups of 3+ side-by-side lots in R-2/R-3/MX zones that are not anyone's primary residence:
+// easier for a developer to buy up together. Uses only the exemption and lot lines, never owner names.
+function markRentalClusters(parcels){
+  const LAT=111320, LON=111320*Math.cos(43.59*Math.PI/180), TOL=1.5;
+  const cand=parcels.filter(p=>p.w && !['inst','platted'].includes(p.w) && ['rmid','mx1','mxhi'].includes(p.g) && notPrimary(p) && !notSite(p));
+  const segD=(px,py,ax,ay,bx,by)=>{const dx=bx-ax,dy=by-ay,L=dx*dx+dy*dy;let u=L?((px-ax)*dx+(py-ay)*dy)/L:0;u=Math.max(0,Math.min(1,u));return Math.hypot(ax+u*dx-px,ay+u*dy-py);};
+  cand.forEach(p=>{ p._m=p.rings.map(r=>r.map(([x,y])=>[x*LON,y*LAT])); const v=p._m.flat(); p._mb=[Math.min(...v.map(q=>q[0])),Math.min(...v.map(q=>q[1])),Math.max(...v.map(q=>q[0])),Math.max(...v.map(q=>q[1]))]; });
+  const touches=(a,b)=>{
+    if(b._mb[0]>a._mb[2]+3||b._mb[2]<a._mb[0]-3||b._mb[1]>a._mb[3]+3||b._mb[3]<a._mb[1]-3) return false;
+    const pts=new Set();
+    const col=(A,B)=>{for(const r of A) for(const [x,y] of r){ for(const q of B){ let hit=false; for(let i=1;i<q.length;i++){ if(segD(x,y,q[i-1][0],q[i-1][1],q[i][0],q[i][1])<TOL){hit=true;break;} } if(hit){pts.add(Math.round(x)+','+Math.round(y));break;} } }};
+    col(a._m,b._m); col(b._m,a._m);
+    return pts.size>=2;
+  };
+  const adj=new Map(cand.map(p=>[p.id,[]]));
+  for(let i=0;i<cand.length;i++) for(let j=i+1;j<cand.length;j++) if(touches(cand[i],cand[j])){ adj.get(cand[i].id).push(cand[j]); adj.get(cand[j].id).push(cand[i]); }
+  const seen=new Set(); let n=0;
+  parcels.forEach(p=>{p.cluster=null;});
+  cand.forEach(p=>{
+    if(seen.has(p.id)) return;
+    const comp=[]; const stack=[p]; seen.add(p.id);
+    while(stack.length){ const q=stack.pop(); comp.push(q); for(const r of adj.get(q.id)) if(!seen.has(r.id)){ seen.add(r.id); stack.push(r); } }
+    if(comp.length>=3){
+      n++; const ac=comp.reduce((s,q)=>s+(q.ac||0),0);
+      const info={n:comp.length, ac, streets:[...new Set(comp.map(q=>(q.addr||'').replace(/^\d+\s+/,'')).filter(Boolean))].slice(0,3)};
+      comp.forEach(q=>{ q.cluster=info; });
+    }
+  });
+}
+// Development pressure for apartments: a reason (zoning, size, use) combined with ownership.
+function pressureOf(p){
+  if(!p.w) return 'low';
+  if(p.cluster) return 'cluster';
+  if(['inst','platted'].includes(p.w)) return 'moderate';
+  return notPrimary(p)?'higher':'moderate';
+}
 function analyze(raw){
   const parcels=[];
   // The county sometimes returns one parcel as several pieces with the same ID: merge them into one lot.
@@ -731,6 +754,8 @@ function analyze(raw){
     p.apps=apps.filter(a=>a.parcel===p.id && a.active);
   });
   markTransitions(parcels);
+  markRentalClusters(parcels);
+  parcels.forEach(p=>{ p.pr=pressureOf(p); });
   estimateFrontage(parcels,raw.streets||[]);
   markIncentive(parcels,raw);
   parcels.forEach(p=>{p.inc=incentiveOf(p); p.sub=subdivOf(p);});
@@ -848,7 +873,8 @@ function render(model){
 }
 
 const LIST_LIMIT=8;
-function listSortKey(p){ return [-(p.apps?p.apps.length:0), NOTES[p.id]?0:1, -(p.ac||0)]; }
+const PR_RANK={cluster:0,higher:1,moderate:2,low:3};
+function listSortKey(p){ return [PR_RANK[p.pr]??3, -(p.apps?p.apps.length:0), NOTES[p.id]?0:1, -(p.ac||0)]; }
 function cmpKey(a,b){ const x=listSortKey(a), y=listSortKey(b); for(let i=0;i<x.length;i++){ if(x[i]!==y[i]) return x[i]<y[i]?-1:1; } return 0; }
 function renderList(){
   const list=document.getElementById('list'); if(!list) return;
@@ -911,6 +937,8 @@ function lowPressureText(p){
 function noteFor(p,short){
   const parts=[];
   if(p.apps&&p.apps.length) parts.push(p.apps.map(a=>appKind(a)+': '+(a.desc||a.id)+' ('+a.st+')').join('; ')+'.');
+  if(p.pr==='cluster') parts.push((p.use==='home'?'Not owner-occupied. ':'')+'One of '+p.cluster.n+' side-by-side lots that are not anyone’s primary residence ('+p.cluster.ac.toFixed(2)+' acres together), which could be bought up as one site.');
+  else if(p.pr==='higher') parts.push(p.use==='home'?'Not owner-occupied (no homeowner’s exemption).':'Not anyone’s primary residence.');
   if(NOTES[p.id]) parts.push(NOTES[p.id]);
   if(!short){
     if(p.platted) parts.push('Legal description: '+String(p.legal).split('/').slice(0,2).join(',').trim()+'. A whole lot from the original plat, so it may be possible to sell or build on it separately.');
@@ -950,7 +978,8 @@ function select(id,fromMap){
   }
   const cl=CLUSTERS.find(c=>c.key===p.w);
   const n=noteFor(p,false);
-  det.appendChild(el('div',{class:'note',style:'margin-top:6px'},(cl?'Why it may be targeted for apartments: '+cl.name+'. ':lowPressureText(p)+' ')+n));
+  const PRT={cluster:'Development pressure: highest. ',higher:'Development pressure: higher. ',moderate:'Development pressure: moderate. '};
+  det.appendChild(el('div',{class:'note',style:'margin-top:6px'},(cl?(PRT[p.pr]||'')+'Why it may be targeted for apartments: '+cl.name+'. ':lowPressureText(p)+' ')+n));
 }
 
 function placeLabels(chains,inside2){
@@ -1154,6 +1183,11 @@ const LAYERS={
     build:()=>[['15 / 5 / 15 ft (R-1C)','var(--c1)',p=>zbase(p.z)==='R-1C'],['10 / 5 / 15 ft (R-2, R-3)','var(--c4)',p=>['R-2','R-3'].includes(zbase(p.z))],['0–20 / 0 / 10 ft (mixed use)','var(--c5)',p=>/^MX-/.test(zbase(p.z))],['20 / 20 ft (A-1)','var(--c3)',p=>zbase(p.z)==='A-1'],['Unknown',NODATA,()=>true]]},
   trans:{note:'Lots outside R-1C that share a lot line with an R-1C lot. New apartments, mixed-use or nonresidential buildings here must step down: 35 ft max at the setback, then back 20 ft, then another 10 ft; parking set back at least 10 ft; lights no taller than 20 ft within 50 ft of the line. Lots separated from houses by a street, like most of the Broadway frontage across S Denver Ave, are not marked; ask the city whether a project there must still step down.',
     build:()=>[['Step-down rules apply (borders R-1C)','var(--c5)',p=>p.trans],['Larger zone, no R-1C neighbor','var(--c2)',p=>p.g!=='r1c'&&!p.trans],['R-1C lot',NODATA,()=>true]]},
+  pressure:{note:'Combines a lot’s reason (zoning, size and current use) with whether it is someone’s primary residence. Higher: the lot has a reason and is not owner-occupied (no homeowner’s exemption) or is commercial, vacant or parking land. Highest: one of 3 or more side-by-side lots like that in R-2, R-3 or mixed-use zoning, which a developer could buy up together. Moderate: the lot has a reason but is owner-occupied, a neighbor’s yard lot or tax-exempt land. A missing exemption can also mean a recent buyer, a trust or a second home.',
+    build:()=>[['Highest: in a cluster of 3+ adjacent non-owner-occupied lots','var(--c5)',p=>p.pr==='cluster'],
+      ['Higher: has a reason and not owner-occupied','var(--c2)',p=>p.pr==='higher'],
+      ['Moderate: has a reason, owner-occupied or institutional','var(--s3)',p=>p.pr==='moderate'],
+      ['Likely low development pressure for apartments',NODATA,()=>true]]},
   watch:{note:'The main reason, if any, that a developer might target each lot for apartments or other added housing, based on its zoning, size, current use and ownership type. A reason is not a prediction that a lot will be developed.',
     build:()=>CLUSTERS.map(c=>[c.name,GROUP_COLORS[c.key],p=>p.w===c.key]).concat([['Likely low development pressure for apartments',NODATA,()=>true]])}
 };
@@ -1217,23 +1251,6 @@ async function boot(){
 boot();
 })();
 </script>
-<script>
-  (function () {
-    var btn = document.getElementById("themeBtn");
-    function render() {
-      var dark = document.documentElement.dataset.theme === "dark";
-      btn.textContent = dark ? "\u2600" : "\u263E";
-      btn.setAttribute("aria-label", "Switch to " + (dark ? "light" : "dark") + " mode");
-      btn.title = btn.getAttribute("aria-label");
-    }
-    btn.addEventListener("click", function () {
-      var t = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      document.documentElement.dataset.theme = t;
-      try { localStorage.setItem("theme", t); } catch (e) {}
-      render();
-    });
-    render();
-  })();
-</script>
+
 </body>
 </html>

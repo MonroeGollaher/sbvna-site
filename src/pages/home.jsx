@@ -149,7 +149,7 @@ export default function Home() {
               11″ × 17″ <span aria-hidden="true">·</span> $10 minimum donation
             </p>
             <a className="home-text-link" href="mailto:sbvnaboise@gmail.com">
-              Order your poster <span aria-hidden="true">↗</span>
+              Request a poster <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>

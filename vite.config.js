@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// The dev server falls back to the React app for folder URLs like /zoning-maps/,
-// so point them at the static page in public/ (Netlify already does this in production).
+// Serve standalone pages and preserve old watch-list bookmarks.
 const staticPages = {
   name: 'static-pages',
   configureServer(server) {
@@ -12,8 +11,8 @@ const staticPages = {
         res.end()
         return
       }
-      if (/^\/zoning-maps\/?(\?.*)?$/.test(req.url)) {
-        req.url = req.url.replace(/^\/zoning-maps\/?/, '/zoning-maps/index.html')
+      if (/^\/(zoning-maps|ongoing-development)\/?(\?.*)?$/.test(req.url)) {
+        req.url = req.url.replace(/^\/(zoning-maps|ongoing-development)\/?/, '/$1/index.html')
       }
       next()
     })
@@ -23,4 +22,13 @@ const staticPages = {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [staticPages, react()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        zoning: 'zoning-maps/index.html',
+        development: 'ongoing-development/index.html',
+      },
+    },
+  },
 })

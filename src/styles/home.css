@@ -142,7 +142,7 @@
   .hero { min-height: 560px; padding-block: var(--space-16); }
   .hero::after { background: rgba(16, 27, 19, 0.7); }
   .home-event { flex-wrap: wrap; gap: var(--space-4); padding-block: var(--space-8); }
-  .home-event__date { flex-basis: 80px; min-height: 88px; }
+  .home-event__date { flex-basis: 80px; min-height: 88px; text-align: center; }
   .home-event__text { min-width: 180px; }
   .home-event > .home-text-link { margin-left: 96px; }
   .poster { padding-block: var(--space-12) var(--space-16); }
