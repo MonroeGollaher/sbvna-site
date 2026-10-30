@@ -149,3 +149,9 @@
   .poster__inner { grid-template-columns: 1fr; gap: var(--space-10); }
   .poster__frame { max-width: 320px; width: 90%; }
 }
+
+.home-arrow {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}

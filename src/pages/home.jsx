@@ -7,6 +7,26 @@ import home from "../content/home/home.json";
 import eventsPage from "../content/events/events.json";
 import "../styles/home.css";
 
+function HomeArrow({ diagonal = false }) {
+  return (
+    <svg
+      className="home-arrow"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d={
+          diagonal
+            ? "M6 5v2h8.59L5 16.59 6.41 18 16 8.41V17h2V5Z"
+            : "M4 11h12.2l-4-4L13.6 5.6 20 12l-6.4 6.4-1.4-1.4 4-4H4Z"
+        }
+      />
+    </svg>
+  );
+}
+
 function getNextEventBanner(events) {
   const now = new Date();
   const oneMonthOut = new Date(now);
@@ -82,10 +102,7 @@ export default function Home() {
           <p className="hero__blurb">{home.blurb}</p>
           <div className="hero__actions">
             <Link to="/about" className="hero__btn">
-              Explore the neighborhood <span aria-hidden="true">↗</span>
-            </Link>
-            <Link to="/board" className="hero__secondary">
-              Meet your neighbors <span aria-hidden="true">→</span>
+              Explore the neighborhood <HomeArrow diagonal />
             </Link>
           </div>
         </div>
@@ -119,8 +136,7 @@ export default function Home() {
           </p>
         </div>
         <Link className="home-text-link" to="/events">
-          {nextEvent ? "Event details" : "Explore our events"}{" "}
-          <span aria-hidden="true">→</span>
+          {nextEvent ? "Event details" : "Explore our events"} <HomeArrow />
         </Link>
       </section>
 
@@ -149,7 +165,7 @@ export default function Home() {
               11″ × 17″ <span aria-hidden="true">·</span> $10 minimum donation
             </p>
             <a className="home-text-link" href="mailto:sbvnaboise@gmail.com">
-              Request a poster <span aria-hidden="true">↗</span>
+              Request a poster <HomeArrow diagonal />
             </a>
           </div>
         </div>
