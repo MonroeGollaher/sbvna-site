@@ -110,7 +110,7 @@ export default function Documents() {
                 <div className="doc-card__body">
                   <h4 className="card__title">{d.title}</h4>
                   <p className="doc-card__badge-row">
-                    <span className="badge">{d.category}</span>
+                    <span className="badge" data-category={d.category}>{d.category}</span>
                   </p>
                   {d.description ? (
                     <p className="card__meta">{d.description}</p>

@@ -9,9 +9,10 @@
   border-bottom: 2px solid var(--color-brand-lighter);
 }
 
-.doc-card {
+.card.doc-card {
   overflow: hidden;
   padding: 0;
+  min-width: 0;
 }
 
 .doc-card__image {
@@ -26,9 +27,72 @@
 }
 
 .doc-card__body {
-  padding: var(--space-4) var(--space-5) var(--space-5);
+  width: 100%;
+  padding: var(--space-5);
+  text-align: left;
+  overflow-wrap: anywhere;
 }
 
 .doc-card__badge-row {
   margin-bottom: var(--space-2);
+}
+
+.doc-card__badge-row .badge {
+  max-width: 100%;
+  border-radius: var(--radius-sm);
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+/* Category colors: green, terracotta, ochre, clay, cocoa, and stone. */
+.doc-card__badge-row .badge[data-category="Newsletters"] {
+  background: #f4e0d5;
+  color: #85442e;
+}
+
+.doc-card__badge-row .badge[data-category="Annual Reports"] {
+  background: #f0e5c6;
+  color: #70551c;
+}
+
+.doc-card__badge-row .badge[data-category="Transportation Surveys"] {
+  background: #eee0dc;
+  color: #7c4a41;
+}
+
+.doc-card__badge-row .badge[data-category="Meeting Minutes"] {
+  background: #e9dfd2;
+  color: #695038;
+}
+
+.doc-card__badge-row .badge[data-category="Misc"] {
+  background: #e5e2da;
+  color: #5d584b;
+}
+
+[data-theme="dark"] .doc-card__badge-row .badge[data-category="Newsletters"] {
+  background: #432d24;
+  color: #edb296;
+}
+
+[data-theme="dark"] .doc-card__badge-row .badge[data-category="Annual Reports"] {
+  background: #3d331e;
+  color: #e3c47e;
+}
+
+[data-theme="dark"] .doc-card__badge-row .badge[data-category="Transportation Surveys"] {
+  background: #402d2a;
+  color: #dfb0a5;
+}
+
+[data-theme="dark"] .doc-card__badge-row .badge[data-category="Meeting Minutes"] {
+  background: #383025;
+  color: #d8bd9e;
+}
+
+[data-theme="dark"] .doc-card__badge-row .badge[data-category="Misc"] {
+  background: #333129;
+  color: #c9c2af;
 }
