@@ -48,6 +48,11 @@ function ImageCard({ src, alt, onOpen }) {
       aria-label={alt ? `Expand image: ${alt}` : "Expand image"}
     >
       <img src={src} alt={alt} loading="lazy" />
+      <span className="about-image-card__expand" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M14 4h6v6m0-6-7 7M10 20H4v-6m0 6 7-7" />
+        </svg>
+      </span>
     </button>
   );
 }
@@ -62,57 +67,59 @@ export default function About() {
   const [lightbox, setLightbox] = useState(null);
 
   return (
-    <div className="page-wrapper">
-      <h1 className="animate-fade-up">{about.title}</h1>
-      <p className="animate-fade-up delay-1">{about.blurb}</p>
-      <ScrollReveal>
-        <ImageCard
-          src={about.headerImage}
-          alt={about.headerImageAlt || ""}
-          onOpen={setLightbox}
-        />
-      </ScrollReveal>
-      {about.sections.map((section, i) => (
-        <ScrollReveal
-          key={section.title}
-          className="about-section"
-          delay={i * 0.05}
-        >
-          {section.layout === "flex" && section.image ? (
-            <div className="about-section__flex">
-              <ImageCard
-                src={section.image}
-                alt={section.imageAlt || section.title}
-                onOpen={setLightbox}
-              />
-              <div className="about-section__text">
-                <h3>{section.title}</h3>
-                {renderBlurb(section.blurb)}
-                {section.imageCaption ? (
-                  <p className="caption">{section.imageCaption}</p>
-                ) : null}
-              </div>
+    <div className="page-wrapper about-page">
+      <header className="about-intro">
+        <div className="about-intro__text animate-fade-up">
+          <p className="about-eyebrow">Our neighborhood · Boise, Idaho</p>
+          <h1>{about.title}</h1>
+          <p className="about-intro__blurb">{about.blurb}</p>
+        </div>
+        <div className="about-intro__map animate-fade-up delay-1">
+          <ImageCard
+            src={about.headerImage}
+            alt={about.headerImageAlt || ""}
+            onOpen={setLightbox}
+          />
+          <p className="about-map-caption">South Boise Village boundaries · Select map to enlarge</p>
+        </div>
+      </header>
+
+      <div className="about-sections">
+        {about.sections.map((section) => (
+          <ScrollReveal
+            key={section.title}
+            className={`about-section${section.title === "Mission Statement" ? " about-section--mission" : ""}${section.title === "Vision Statement" ? " about-section--vision" : ""}`}
+          >
+            <div className="about-section__heading">
+              <h2>{section.title}</h2>
             </div>
-          ) : (
-            <>
-              <h3>{section.title}</h3>
-              {renderBlurb(section.blurb)}
-              {section.image ? (
-                <>
+            <div className="about-section__content">
+              {section.layout === "flex" && section.image ? (
+                <div className="about-section__flex">
                   <ImageCard
                     src={section.image}
                     alt={section.imageAlt || section.title}
                     onOpen={setLightbox}
                   />
-                  {section.imageCaption ? (
-                    <p className="caption">{section.imageCaption}</p>
+                  <div className="about-section__text">{renderBlurb(section.blurb)}</div>
+                </div>
+              ) : (
+                <>
+                  {renderBlurb(section.blurb)}
+                  {section.image ? (
+                    <ImageCard
+                      src={section.image}
+                      alt={section.imageAlt || section.title}
+                      onOpen={setLightbox}
+                    />
                   ) : null}
                 </>
-              ) : null}
-            </>
-          )}
-        </ScrollReveal>
-      ))}
+              )}
+              {section.imageCaption ? <p className="caption">{section.imageCaption}</p> : null}
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
 
       {lightbox ? (
         <Lightbox
