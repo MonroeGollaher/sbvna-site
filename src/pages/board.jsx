@@ -40,7 +40,7 @@ export default function Board() {
   }
 
   return (
-    <div className="page-wrapper">
+    <div className="page-wrapper board-page">
       <h1 className="animate-fade-up">Meet the Board</h1>
 
       <ScrollReveal>

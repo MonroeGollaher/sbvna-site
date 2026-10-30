@@ -1,3 +1,29 @@
+/* Fit two Polaroids per row on phones without changing the desktop grid. */
+@media (max-width: 767px) {
+  .board-page .polaroids {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: var(--space-6) var(--space-4);
+    padding-inline: var(--space-2);
+  }
+
+  .board-page .polaroid {
+    width: 100%;
+    max-width: 190px;
+    min-width: 0;
+  }
+
+  .board-page .polaroid__image {
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .board-page .polaroid__caption {
+    overflow-wrap: anywhere;
+  }
+}
+
 /* ===== Board member modal ===== */
 .board-modal {
   max-width: 900px;
