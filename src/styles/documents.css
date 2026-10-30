@@ -13,11 +13,13 @@
   overflow: hidden;
   padding: 0;
   min-width: 0;
+  --doc-label-bg: var(--color-brand-lighter);
+  --doc-label-ink: var(--color-brand-dark);
 }
 
 .doc-card__image {
   width: 100%;
-  height: 200px;
+  height: 160px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -39,6 +41,8 @@
 
 .doc-card__badge-row .badge {
   max-width: 100%;
+  background: var(--doc-label-bg);
+  color: var(--doc-label-ink);
   border-radius: var(--radius-sm);
   text-transform: none;
   letter-spacing: normal;
@@ -47,52 +51,77 @@
 }
 
 /* Category colors: green, terracotta, ochre, clay, cocoa, and stone. */
-.doc-card__badge-row .badge[data-category="Newsletters"] {
-  background: #f4e0d5;
-  color: #85442e;
+.doc-card[data-category="Newsletters"] {
+  --doc-label-bg: #f4e0d5;
+  --doc-label-ink: #85442e;
 }
 
-.doc-card__badge-row .badge[data-category="Annual Reports"] {
-  background: #f0e5c6;
-  color: #70551c;
+.doc-card[data-category="Annual Reports"] {
+  --doc-label-bg: #f0e5c6;
+  --doc-label-ink: #70551c;
 }
 
-.doc-card__badge-row .badge[data-category="Transportation Surveys"] {
-  background: #eee0dc;
-  color: #7c4a41;
+.doc-card[data-category="Transportation Surveys"] {
+  --doc-label-bg: #eee0dc;
+  --doc-label-ink: #7c4a41;
 }
 
-.doc-card__badge-row .badge[data-category="Meeting Minutes"] {
-  background: #e9dfd2;
-  color: #695038;
+.doc-card[data-category="Meeting Minutes"] {
+  --doc-label-bg: #e9dfd2;
+  --doc-label-ink: #695038;
 }
 
-.doc-card__badge-row .badge[data-category="Misc"] {
-  background: #e5e2da;
-  color: #5d584b;
+.doc-card[data-category="Misc"] {
+  --doc-label-bg: #e5e2da;
+  --doc-label-ink: #5d584b;
 }
 
-[data-theme="dark"] .doc-card__badge-row .badge[data-category="Newsletters"] {
-  background: #432d24;
-  color: #edb296;
+[data-theme="dark"] .doc-card[data-category="Newsletters"] {
+  --doc-label-bg: #432d24;
+  --doc-label-ink: #edb296;
 }
 
-[data-theme="dark"] .doc-card__badge-row .badge[data-category="Annual Reports"] {
-  background: #3d331e;
-  color: #e3c47e;
+[data-theme="dark"] .doc-card[data-category="Annual Reports"] {
+  --doc-label-bg: #3d331e;
+  --doc-label-ink: #e3c47e;
 }
 
-[data-theme="dark"] .doc-card__badge-row .badge[data-category="Transportation Surveys"] {
-  background: #402d2a;
-  color: #dfb0a5;
+[data-theme="dark"] .doc-card[data-category="Transportation Surveys"] {
+  --doc-label-bg: #402d2a;
+  --doc-label-ink: #dfb0a5;
 }
 
-[data-theme="dark"] .doc-card__badge-row .badge[data-category="Meeting Minutes"] {
-  background: #383025;
-  color: #d8bd9e;
+[data-theme="dark"] .doc-card[data-category="Meeting Minutes"] {
+  --doc-label-bg: #383025;
+  --doc-label-ink: #d8bd9e;
 }
 
-[data-theme="dark"] .doc-card__badge-row .badge[data-category="Misc"] {
-  background: #333129;
-  color: #c9c2af;
+[data-theme="dark"] .doc-card[data-category="Misc"] {
+  --doc-label-bg: #333129;
+  --doc-label-ink: #c9c2af;
+}
+
+.doc-card__preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  min-height: 144px;
+  padding: var(--space-6);
+  background: var(--doc-label-bg);
+  color: var(--doc-label-ink);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.doc-card__preview svg {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 52px;
+}
+
+.doc-card__preview span {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }

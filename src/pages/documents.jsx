@@ -26,6 +26,33 @@ function orderCategories(present) {
   return [...known, ...unknown];
 }
 
+function DocumentPreview({ document }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const hasPreview = document.image && !document.image.includes("placehold.co/") && !imageFailed;
+
+  if (hasPreview) {
+    return (
+      <img
+        className="doc-card__image"
+        src={document.image}
+        alt={document.title}
+        loading="lazy"
+        onError={() => setImageFailed(true)}
+      />
+    );
+  }
+
+  return (
+    <div className="doc-card__preview" aria-hidden="true">
+      <svg viewBox="0 0 48 56" fill="none" focusable="false">
+        <path d="M9 3h20l10 10v40H9Z" fill="var(--color-bg-raised)" />
+        <path d="M29 3v10h10M9 3h20l10 10v40H9ZM16 25h16M16 33h16M16 41h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <span>{document.title.replace(/^SBVNA /, "")}</span>
+    </div>
+  );
+}
+
 export default function Documents() {
   usePageMeta({
     title: "Documents",
@@ -98,15 +125,8 @@ export default function Documents() {
           <h3 className="docs-section__title">{cat}</h3>
           <div className="grid grid--auto">
             {catDocs.map((d) => (
-              <div key={d.title} className="card doc-card">
-                {d.image ? (
-                  <img
-                    className="doc-card__image"
-                    src={d.image}
-                    alt={d.title}
-                    loading="lazy"
-                  />
-                ) : null}
+              <div key={d.title} className="card doc-card" data-category={d.category}>
+                <DocumentPreview document={d} />
                 <div className="doc-card__body">
                   <h4 className="card__title">{d.title}</h4>
                   <p className="doc-card__badge-row">
