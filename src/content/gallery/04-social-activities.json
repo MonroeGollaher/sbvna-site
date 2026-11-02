@@ -1,0 +1,52 @@
+{
+  "title": "Social Activities",
+  "image": "/images/gallery/social-activities-01-thumb.webp",
+  "imageAlt": "Ice Cream Social 2018",
+  "tags": [
+    "Social Activities"
+  ],
+  "photos": [
+    {
+      "image": "/images/gallery/social-activities-01-thumb.webp",
+      "imageAlt": "Ice Cream Social 2018",
+      "caption": "Ice Cream Social 2018",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_bcf3d50176ab4c90b0b1bed14032e76b~mv2.jpg",
+      "originalTitle": "IMG_5945 print",
+      "fullImage": "/images/gallery/social-activities-01.webp"
+    },
+    {
+      "image": "/images/gallery/social-activities-02-thumb.webp",
+      "imageAlt": "Rake up Boise 2019",
+      "caption": "Rake up Boise 2019",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_63417f393411413bba9dc813ff554cf5~mv2.jpg",
+      "originalTitle": "IMG_2217",
+      "fullImage": "/images/gallery/social-activities-02.webp"
+    },
+    {
+      "image": "/images/gallery/social-activities-03-thumb.webp",
+      "imageAlt": "2018 Ice Cream Social",
+      "caption": "2018 Ice Cream Social",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_b1d180db25ee45f3a7fa66c775d8a087~mv2.jpg",
+      "originalTitle": "Ice Cream Social",
+      "fullImage": "/images/gallery/social-activities-03.webp"
+    },
+    {
+      "image": "/images/gallery/social-activities-04-thumb.webp",
+      "imageAlt": "2018 - Rake up Boise",
+      "caption": "2018 - Rake up Boise",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_23495a3da18f4aa5bf85bac26402ce81~mv2.jpg",
+      "originalTitle": "leaf raking",
+      "fullImage": "/images/gallery/social-activities-04.webp"
+    },
+    {
+      "image": "/images/gallery/social-activities-05-thumb.webp",
+      "imageAlt": "2017 - Ice Cream Social",
+      "caption": "2017 - Ice Cream Social",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_634d65b408c94e158d206e952a2750b5~mv2_d_5248_2952_s_4_2.jpg",
+      "originalTitle": "2017 icecream social",
+      "fullImage": "/images/gallery/social-activities-05.webp"
+    }
+  ],
+  "sourcePage": "https://sbvnaboise.wixsite.com/sbvna/photo-gallery",
+  "uploadDate": "2026-11-02"
+}

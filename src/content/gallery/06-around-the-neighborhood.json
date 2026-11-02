@@ -1,0 +1,52 @@
+{
+  "title": "Seen Around the Neighborhood",
+  "image": "/images/gallery/around-the-neighborhood-01-thumb.webp",
+  "imageAlt": "Garabatos 2018",
+  "tags": [
+    "Seen Around the Neighborhood"
+  ],
+  "photos": [
+    {
+      "image": "/images/gallery/around-the-neighborhood-01-thumb.webp",
+      "imageAlt": "Garabatos 2018",
+      "caption": "Garabatos 2018",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_6d30cb3cde6f460280113bec1c04cf9e~mv2.jpg",
+      "originalTitle": "IMG_6683",
+      "fullImage": "/images/gallery/around-the-neighborhood-01.webp"
+    },
+    {
+      "image": "/images/gallery/around-the-neighborhood-02-thumb.webp",
+      "imageAlt": "Old Firehouse 2019",
+      "caption": "Old Firehouse 2019",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_cd6c9f6930a14cddab476c7f3807b688~mv2.jpg",
+      "originalTitle": "IMG_0662",
+      "fullImage": "/images/gallery/around-the-neighborhood-02.webp"
+    },
+    {
+      "image": "/images/gallery/around-the-neighborhood-03-thumb.webp",
+      "imageAlt": "Hopffgarten House 2019",
+      "caption": "Hopffgarten House 2019",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_700bc22ff30c4c75ad586c4edf6a90ab~mv2.jpg",
+      "originalTitle": "IMG_0652",
+      "fullImage": "/images/gallery/around-the-neighborhood-03.webp"
+    },
+    {
+      "image": "/images/gallery/around-the-neighborhood-04-thumb.webp",
+      "imageAlt": "Bounty 2020",
+      "caption": "Bounty 2020",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_2ca194064f35430eacd703f3ab4198d6~mv2.jpg",
+      "originalTitle": "IMG_0647",
+      "fullImage": "/images/gallery/around-the-neighborhood-04.webp"
+    },
+    {
+      "image": "/images/gallery/around-the-neighborhood-05-thumb.webp",
+      "imageAlt": "2020",
+      "caption": "2020",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_199e41539ac247c899eed624e24e08cf~mv2.jpg",
+      "originalTitle": "IMG_0310",
+      "fullImage": "/images/gallery/around-the-neighborhood-05.webp"
+    }
+  ],
+  "sourcePage": "https://sbvnaboise.wixsite.com/sbvna/photo-gallery",
+  "uploadDate": "2026-11-02"
+}

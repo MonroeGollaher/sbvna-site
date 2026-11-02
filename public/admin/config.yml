@@ -130,10 +130,23 @@ collections:
     format: "json"
     fields:
       - { name: "title", label: "Title", widget: "string" }
-      - { name: "image", label: "Image", widget: "image" }
-      - { name: "imageAlt", label: "Image Alt Text", widget: "string" }
+      - { name: "uploadDate", label: "Date Added", widget: "datetime", required: false, default: "{{now}}", format: "YYYY-MM-DD", date_format: "MMM D, YYYY", time_format: false, hint: "When this album was added to the site, not when the photos were taken." }
+      - { name: "image", label: "Cover / Single Photo", widget: "image", required: false }
+      - { name: "imageAlt", label: "Cover Alt Text", widget: "string", required: false }
       - { name: "caption", label: "Caption", widget: "text", required: false }
       - { name: "tags", label: "Tags", widget: "list", required: false }
+
+      - name: "photos"
+        label: "Gallery Photos"
+        widget: "list"
+        required: false
+        hint: "Add multiple photos for an event album, or use the single photo field above. Navigation appears only for multiple photos."
+        summary: "{{fields.imageAlt}}"
+        fields:
+          - { name: "image", label: "Photo / Thumbnail", widget: "image" }
+          - { name: "fullImage", label: "Larger Photo (optional)", widget: "image", required: false }
+          - { name: "imageAlt", label: "Photo Alt Text", widget: "string" }
+          - { name: "caption", label: "Caption", widget: "text", required: false }
 
   - name: "documents"
     label: "Documents"

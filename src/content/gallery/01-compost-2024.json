@@ -1,0 +1,44 @@
+{
+  "title": "Neighborhood Compost 2024",
+  "image": "/images/gallery/compost-2024-01-thumb.webp",
+  "imageAlt": "Black gold arrives",
+  "tags": [
+    "Neighborhood Compost 2024"
+  ],
+  "photos": [
+    {
+      "image": "/images/gallery/compost-2024-01-thumb.webp",
+      "imageAlt": "Black gold arrives",
+      "caption": "Black gold arrives",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_ed4713676985467e949af719b6f32084~mv2.jpg",
+      "originalTitle": "Black gold arrives",
+      "fullImage": "/images/gallery/compost-2024-01.webp"
+    },
+    {
+      "image": "/images/gallery/compost-2024-02-thumb.webp",
+      "imageAlt": "Going,",
+      "caption": "Going,",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_4ac64d0d271548458de9c5aeb87030dd~mv2.jpg",
+      "originalTitle": "Going,",
+      "fullImage": "/images/gallery/compost-2024-02.webp"
+    },
+    {
+      "image": "/images/gallery/compost-2024-03-thumb.webp",
+      "imageAlt": "going,",
+      "caption": "going,",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_f2504154e2fe422585c933302c389980~mv2.jpg",
+      "originalTitle": "going,",
+      "fullImage": "/images/gallery/compost-2024-03.webp"
+    },
+    {
+      "image": "/images/gallery/compost-2024-04-thumb.webp",
+      "imageAlt": "gone. Brought to you by these guys!",
+      "caption": "gone. Brought to you by these guys!",
+      "sourceImage": "https://static.wixstatic.com/media/29b484_9bc7f51662ba40a7bc9f72502ed63af3~mv2.jpg",
+      "originalTitle": "gone. Brought to you by these guys!",
+      "fullImage": "/images/gallery/compost-2024-04.webp"
+    }
+  ],
+  "sourcePage": "https://sbvnaboise.wixsite.com/sbvna/photo-gallery",
+  "uploadDate": "2026-11-02"
+}
