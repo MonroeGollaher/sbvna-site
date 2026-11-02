@@ -1,0 +1,41 @@
+name: Import development report
+on:
+  schedule:
+    # Daily at 7 AM Boise time, including daylight saving changes.
+    # Upstream's backup runs later; late reports are picked up the next day.
+    - cron: '0 7 * * *'
+      timezone: 'America/Boise'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: import-development
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test scripts/import-development.test.mjs
+      - run: node scripts/import-development.mjs
+      - name: Commit changed report
+        run: |
+          if git diff --quiet -- ongoing-development/index.html; then
+            echo "Published report unchanged; no commit needed."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- ongoing-development/index.html
+          git commit -m "Update published development report"
+          git push origin HEAD:main
