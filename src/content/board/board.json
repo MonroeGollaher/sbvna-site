@@ -1,40 +1,46 @@
 {
   "members": [
     {
-      "name": "Ryan Shackleford",
-    "role": "President",
-    "photo": "/images/board-members/ryan.avif",
-    "bio": "Ryan grew up in South Boise and jumped at the opportunity to return four years ago. Having completed medical training and worked in big cities in family medicine and psychiatry, it was always his intent to return to his roots and to set up a practice near his parents and sibling. He remembers an idyllic childhood roaming the neighborhoods of Southeast Boise and wants to re-create the same for his children.\n\nA lot changed in the intervening decades. Being a child, parent, and/or grandparent has never been more difficult. Being connected to each other has never been more difficult. Many feel isolated, stressed out, frustrated and depressed. Ryan is committed to contributing to his local community with skills developed educating and providing interventions for emotional health and well-being.\n\nHe works in a Federally Qualified Health Center in town, providing care to those with poor access to behavioral health services. He also teaches resident physicians in family medicine and psychiatry how to provide excellent care. Finally, he owns a small, private psychotherapy practice on the bench which specializes in intensive short-term psychotherapy and medication-assisted psychotherapy (psychedelics, the wave of the future!).\n\nRyan participates in the Idaho State Behavioral Health Planning Committee and in research through the Family Medicine Residency of Idaho, in addition to a few other local projects dear to his heart. He’s a member of the Garfield Elementary School PTO where both of his children go to school, and where his sister teaches. Ryan believes a strong public education system is the only way to sustain a healthy, happy, and equitable community.\n\nRyan credits his amazing wife, Rhiana, with the idea and implementation of the new Garfield Walking Path, but don’t be fooled. Ryan contributed also. Serving on the SBV Board is an important project representing a diverse and inclusive community."
-  },
-  {
-    "name": "Tyler King",
-    "role": "Secretary",
-    "photo": "/images/board-members/tyler.avif",
-    "bio": "Tyler and his wife Justine moved to the neighborhood from farther west in Boise in 2020 and have been enthralled with the neighborhood ever since. Together, they are renovating a home on Manitou Avenue, developing a garden plot, and rearing a flock of chickens.\n\nTyler volunteered for the neighborhood association board with the hope of building an inclusive community and advocating for city resources to support the neighborhood we call home. Tyler is a research hydrologist with the U.S. Geological Survey, a member of the graduate faculty at Boise State University, and an alum of the University of New Hampshire, the Norwegian Institute of Science and Technology, the Fulbright scholar program, and Utah State University.\n\nWhen not in the neighborhood, Tyler and Justine can be found running and biking in Boise foothills, rafting Idaho's rivers, or skiing Idaho's backcountry peaks."
-  },
-  {
-    "name": "Jocelyn Plass",
-    "role": "Treasurer",
-    "photo": "/images/board-members/jocelyn.avif",
-    "bio": "Jocelyn and her family divide their time between beautiful Stanley and gorgeous South Boise Village. Jocelyn is a Realtor and her spouse is an attorney. In her spare time she enjoys gardening, skiing, playing pond hockey while in Stanley and women's recreation league hockey in Boise and making delicious confections and baked goods. The family enjoys hiking, swimming, cooking, traveling, hanging out and working on their home.\n\nIf you see her out in her amazing Dahlia garden or walking the neighborhood with the RescuePets (Belle and Ladybird) please say hello."
-  },
-  {
-    "name": "Lisa Kusnierz",
-    "role": "Director- Past President",
-    "photo": "/images/board-members/lisa.avif",
-    "bio": "Lisa is originally from Virginia, and lived in Maine and the Upper Peninsula of Michigan before making her way west. She relocated to Boise in late 2016 after living in Montana for 10 years. She and her husband have two young kids and can often be seen walking or biking around the neighborhood, or playing at Manitou Park. She enjoys the sense of community in South Boise Village, as well as its proximity to downtown and other amenities.\n\nLisa is excited to join the board and work to make the neighborhood an even better place to live."
-  },
-  {
-    "name": "Damiana Uberuaga",
-    "role": "Director",
-    "photo": "/images/board-members/damiana.avif",
-    "bio": "My name is Damiana Uberuaga and I lived in this same neighborhood when I was a little girl at Garfield school. Many journeys since that time. I retired six years ago from a thriving private practice in downtown Boise. I now have time for my art work and travel. I've lived in my same house on Manitou for 33 years and I have no intentions of moving. This is the best neighborhood ever!"
-  },
-  {
-    "name": "Karen Drummey",
-    "role": "Director",
-    "photo": "/images/board-members/karen.avif",
-    "bio": "My name is Karen Drummey. My husband, Ken Wipff and I bought our house on Garfield Street in 2020, and after extensive renovations, moved up here permanently the end of 2021. However, our ties to this neighborhood go back to 2012 when our daughter was attending BSU and we bought a house on Michigan Street. I’ve always enjoyed the energy of this neighborhood—children riding bikes, people out walking, with or without a dog or two.\n\nI want to help preserve this uniqueness and keep this such an enjoyable place to live."
+      "name": "Tyler King",
+      "role": "President",
+      "photo": "/images/board-members/tyler.avif",
+      "bio": "Tyler and his wife Justine moved to the neighborhood from farther west in Boise in 2020 and have been enthralled with the neighborhood ever since. Together, they are renovating a home on Manitou Avenue, developing a garden plot, and rearing a flock of chickens.\n\nTyler volunteered for the neighborhood association board with the hope of building an inclusive community and advocating for city resources to support the neighborhood we call home. Tyler is a research hydrologist with the U.S. Geological Survey, a member of the graduate faculty at Boise State University, and an alum of the University of New Hampshire, the Norwegian Institute of Science and Technology, the Fulbright scholar program, and Utah State University.\n\nWhen not in the neighborhood, Tyler and Justine can be found running and biking in Boise foothills, rafting Idaho's rivers, or skiing Idaho's backcountry peaks."
+    },
+    {
+      "name": "Lisa Kusnierz",
+      "role": "Vice President",
+      "photo": "/images/board-members/lisa.avif",
+      "bio": "Lisa is originally from Virginia, and lived in Maine and the Upper Peninsula of Michigan before making her way west. She relocated to Boise in late 2016 after living in Montana for 10 years. She and her husband have two young kids and can often be seen walking or biking around the neighborhood, or playing at Manitou Park. She enjoys the sense of community in South Boise Village, as well as its proximity to downtown and other amenities.\n\nLisa is excited to join the board and work to make the neighborhood an even better place to live."
+    },
+    {
+      "name": "Jocelyn Plass",
+      "role": "Treasurer",
+      "photo": "/images/board-members/jocelyn.avif",
+      "bio": "Jocelyn and her family divide their time between beautiful Stanley and gorgeous South Boise Village. Jocelyn is a Realtor and her spouse is an attorney. In her spare time she enjoys gardening, skiing, playing pond hockey while in Stanley and women's recreation league hockey in Boise and making delicious confections and baked goods. The family enjoys hiking, swimming, cooking, traveling, hanging out and working on their home.\n\nIf you see her out in her amazing Dahlia garden or walking the neighborhood with the RescuePets (Belle and Ladybird) please say hello."
+    },
+    {
+      "name": "Monroe Gollaher",
+      "role": "Secretary",
+      "photo": "/images/board-members/monroe.jpeg",
+      "bio": "Monroe was born and raised in Boise, Idaho.\n\nWhile he has lived in several other Boise neighborhoods, he’s grown quite fond of South Boise Village since moving here in 2024 with his wife, stepdaughter, two corgis, and two cats.\n\nIn his spare time, he enjoys walks, photography, video games, travel, home improvement projects, and working toward his goal of visiting every MLB ballpark.\n\nHe’s excited to help strengthen the neighborhood’s sense of community through his roles as secretary and the creator and maintainer of this website."
+    },
+    {
+      "name": "Ryan Shackelford",
+      "role": "Board Member",
+      "photo": "/images/board-members/ryan.avif",
+      "bio": "Ryan grew up in South Boise and jumped at the opportunity to return four years ago. Having completed medical training and worked in big cities in family medicine and psychiatry, it was always his intent to return to his roots and to set up a practice near his parents and sibling. He remembers an idyllic childhood roaming the neighborhoods of Southeast Boise and wants to re-create the same for his children.\n\nA lot changed in the intervening decades. Being a child, parent, and/or grandparent has never been more difficult. Being connected to each other has never been more difficult. Many feel isolated, stressed out, frustrated and depressed. Ryan is committed to contributing to his local community with skills developed educating and providing interventions for emotional health and well-being.\n\nHe works in a Federally Qualified Health Center in town, providing care to those with poor access to behavioral health services. He also teaches resident physicians in family medicine and psychiatry how to provide excellent care. Finally, he owns a small, private psychotherapy practice on the bench which specializes in intensive short-term psychotherapy and medication-assisted psychotherapy (psychedelics, the wave of the future!).\n\nRyan participates in the Idaho State Behavioral Health Planning Committee and in research through the Family Medicine Residency of Idaho, in addition to a few other local projects dear to his heart. He’s a member of the Garfield Elementary School PTO where both of his children go to school, and where his sister teaches. Ryan believes a strong public education system is the only way to sustain a healthy, happy, and equitable community.\n\nRyan credits his amazing wife, Rhiana, with the idea and implementation of the new Garfield Walking Path, but don’t be fooled. Ryan contributed also. Serving on the SBV Board is an important project representing a diverse and inclusive community."
+    },
+    {
+      "name": "Damiana Uberuaga",
+      "role": "Board Member",
+      "photo": "/images/board-members/damiana.avif",
+      "bio": "My name is Damiana Uberuaga and I lived in this same neighborhood when I was a little girl at Garfield school. Many journeys since that time. I retired six years ago from a thriving private practice in downtown Boise. I now have time for my art work and travel. I've lived in my same house on Manitou for 33 years and I have no intentions of moving. This is the best neighborhood ever!"
+    },
+    {
+      "name": "Karen Drummey",
+      "role": "Board Member",
+      "photo": "/images/board-members/karen.avif",
+      "bio": "My name is Karen Drummey. My husband, Ken Wipff and I bought our house on Garfield Street in 2020, and after extensive renovations, moved up here permanently the end of 2021. However, our ties to this neighborhood go back to 2012 when our daughter was attending BSU and we bought a house on Michigan Street. I’ve always enjoyed the energy of this neighborhood—children riding bikes, people out walking, with or without a dog or two.\n\nI want to help preserve this uniqueness and keep this such an enjoyable place to live."
     }
   ]
 }
