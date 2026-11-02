@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import "./styles.css";
 
 function getInitialTheme() {
-  const stored = localStorage.getItem("theme");
-  if (stored === "dark" || stored === "light") return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  try {
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark" || stored === "light") return stored;
+  } catch { /* Use the default when browser storage is unavailable. */ }
+  return "light";
 }
 
 export default function ThemeToggle() {
@@ -14,7 +14,7 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem("theme", theme);
+    try { localStorage.setItem("theme", theme); } catch { /* Theme still works without storage. */ }
   }, [theme]);
 
   const toggle = () =>

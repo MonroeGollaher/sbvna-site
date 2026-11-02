@@ -187,7 +187,7 @@ tr.inactive td{color:var(--muted)}
     var t = null;
     try { t = localStorage.getItem("theme"); } catch (e) {}
     if (t !== "dark" && t !== "light")
-      t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      t = "light";
     document.documentElement.dataset.theme = t;
   })();
 </script>

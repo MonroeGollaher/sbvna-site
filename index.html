@@ -57,11 +57,11 @@
 
     <script>
       (function () {
-        var t = localStorage.getItem("theme");
-        if (!t)
-          t = window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
+        var t = "light";
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "dark" || stored === "light") t = stored;
+        } catch {}
         document.documentElement.dataset.theme = t;
       })();
     </script>
