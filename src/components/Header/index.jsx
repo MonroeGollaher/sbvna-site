@@ -85,7 +85,7 @@ export default function Header({ fullPageNavigation = false }) {
               }
             }}
             onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget)) {
+              if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
                 event.currentTarget.removeAttribute("open");
               }
             }}
