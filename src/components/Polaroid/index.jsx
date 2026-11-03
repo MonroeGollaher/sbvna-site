@@ -1,9 +1,9 @@
 import "./styles.css";
 
-export function Polaroid({ src, alt = "", caption, onClick }) {
+export function Polaroid({ src, alt = "", caption, onClick, imagePosition = "50% 50%" }) {
   const content = (
     <>
-      <img className="polaroid__image" src={src} alt={alt} loading="lazy" />
+      <img className="polaroid__image" src={src} alt={alt} loading="lazy" style={{ objectPosition: imagePosition }} />
       {caption ? <p className="polaroid__caption">{caption}</p> : null}
     </>
   );

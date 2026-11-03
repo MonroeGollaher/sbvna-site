@@ -49,6 +49,7 @@ export default function Board() {
             <Polaroid
               key={member.name}
               src={member.photo}
+              imagePosition={member.photoPosition}
               alt={member.name}
               caption={`${member.name} — ${member.role}`}
               onClick={() => {
