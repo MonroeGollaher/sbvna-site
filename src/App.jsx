@@ -7,6 +7,7 @@ import Header from "./components/Header/index.jsx";
 import About from "./pages/about.jsx";
 import Events from "./pages/events.jsx";
 import Resources from "./pages/resources.jsx";
+import OpportunityZone from "./pages/opportunityZone.jsx";
 import NotFound from "./pages/notFound.jsx";
 import Footer from "./components/Footer/index.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/opportunity-zone" element={<OpportunityZone />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

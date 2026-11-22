@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Opportunity Zone forms</title>
+</head>
+<body>
+  <!-- Netlify scans these fields at deploy time. Keep them in sync with the React forms. -->
+  <form name="oz-question" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input name="bot-field">
+    <input name="name">
+    <input name="email" type="email">
+    <textarea name="question" required></textarea>
+  </form>
+  <form name="oz-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input name="bot-field">
+    <input name="name" required>
+    <input name="email" type="email" required>
+    <input name="street">
+  </form>
+</body>
+</html>

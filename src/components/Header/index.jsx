@@ -10,7 +10,8 @@ const NAV_LINKS = [
   { to: "/events", label: "Events" },
   { to: "/gallery", label: "Gallery" },
   { to: "/documents", label: "Documents" },
-  { to: "/resources", label: "Resources" }
+  { to: "/resources", label: "Resources" },
+  { to: "/opportunity-zone", label: "Opportunity Zone" }
 ];
 
 function linkClass({ isActive }) {
