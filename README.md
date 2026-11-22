@@ -11,7 +11,7 @@ Website for the South Boise Village Neighborhood Association. I built this with 
 
 ### Content
 
-All site content is JSON-driven, stored in `src/content/` directories. Gallery and Documents pages use `import.meta.glob()` for dynamic imports, so adding a new JSON file to the folder automatically picks it up — no code changes needed.
+Decap edits the JSON under `src/content/` for Home, About, Events, Resources, Board, Gallery, and Documents. Gallery and Documents load all entries in their respective folders at build time. The Opportunity Zone article and Zoning Maps are maintained in code. The Ongoing Development page is updated by the development report importer.
 
 ## Local Development
 

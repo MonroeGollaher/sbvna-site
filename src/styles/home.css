@@ -34,6 +34,11 @@
 
 .hero__eyebrow { color: #e8d7ad; }
 
+.hero__title,
+.poster__text h2 {
+  white-space: pre-line;
+}
+
 .hero__title {
   font-size: clamp(2.65rem, 5.5vw, 4.5rem);
   font-weight: var(--font-weight-bold);

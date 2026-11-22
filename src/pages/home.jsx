@@ -94,11 +94,8 @@ export default function Home() {
           <p className="home-eyebrow hero__eyebrow">
             South Boise Village · Boise, Idaho
           </p>
-          <h1 className="hero__title">
-            A little neighborhood.
-            <br />A lot of history.
-          </h1>
-          <p className="hero__subtitle">Welcome to South Boise Village.</p>
+          <h1 className="hero__title">{home.title}</h1>
+          <p className="hero__subtitle">{home.intro}</p>
           <p className="hero__blurb">{home.blurb}</p>
           <div className="hero__actions">
             <Link to="/about" className="hero__btn">
@@ -145,26 +142,18 @@ export default function Home() {
           <div className="poster__frame">
             <img
               className="poster__image"
-              src="/images/sbv-poster.webp"
-              alt="Historic South Boise Village Neighborhood poster — available for a minimum donation of $10"
+              src={home.poster.image}
+              alt={home.poster.imageAlt}
             />
           </div>
           <div className="poster__text">
             <p className="home-eyebrow">A piece of the Village</p>
-            <h2>
-              Local pride.
-              <br />
-              Ready to frame.
-            </h2>
-            <p>
-              Get a beautiful 11" x 17" Historic South Boise Village poster for
-              your home. Available for a minimum donation of $10 (cash or check
-              only) with free delivery to your door.
-            </p>
+            <h2>{home.poster.title}</h2>
+            <p>{home.poster.description}</p>
             <p className="poster__details">
-              11″ × 17″ <span aria-hidden="true">·</span> $10 minimum donation
+              {home.poster.dimensions} <span aria-hidden="true">·</span> {home.poster.donation}
             </p>
-            <a className="home-text-link" href="mailto:sbvnaboise@gmail.com">
+            <a className="home-text-link" href={`mailto:${home.poster.email}`}>
               Request a poster <HomeArrow diagonal />
             </a>
           </div>

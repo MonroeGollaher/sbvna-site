@@ -1,6 +1,6 @@
 {
-  "title": "Welcome!",
-  "intro": " This site shares announcements, events, photos, and key documents.",
+  "title": "A little neighborhood.\nA lot of history.",
+  "intro": "Welcome to South Boise Village.",
   "blurb": "South Boise Village offers a blend of historic charm, walkability, and close-in city access. It’s a lively yet relaxed neighborhood with parks, independent eateries, and a diverse community, all just minutes from downtown Boise and the Boise State University campus.",
   "banner": {
     "enabled": true,
@@ -8,5 +8,14 @@
     "linkText": "View events",
     "linkUrl": "/events",
     "expires": "2026-04-12"
+  },
+  "poster": {
+    "title": "Local pride.\nReady to frame.",
+    "image": "/images/sbv-poster.webp",
+    "imageAlt": "Historic South Boise Village Neighborhood poster — available for a minimum donation of $10",
+    "description": "Get a beautiful 11\" x 17\" Historic South Boise Village poster for your home. Available for a minimum donation of $10 (cash or check only) with free delivery to your door.",
+    "dimensions": "11″ × 17″",
+    "donation": "$10 minimum donation",
+    "email": "sbvnaboise@gmail.com"
   }
 }
