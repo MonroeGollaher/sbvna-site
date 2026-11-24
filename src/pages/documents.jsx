@@ -136,6 +136,11 @@ export default function Documents() {
                     <p className="card__meta">{d.description}</p>
                   ) : null}
                   <div className="card__actions">
+                    {!d.file && !d.externalUrl ? (
+                      <button className="btn" type="button" disabled>
+                        Download unavailable
+                      </button>
+                    ) : null}
                     {d.file ? (
                       <a
                         className="btn"

@@ -39,6 +39,15 @@
   margin-bottom: var(--space-2);
 }
 
+.doc-card .btn:disabled {
+  background: var(--color-bg-sunken);
+  border-color: var(--color-border);
+  box-shadow: none;
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  transform: none;
+}
+
 .doc-card__badge-row .badge {
   max-width: 100%;
   background: var(--doc-label-bg);
